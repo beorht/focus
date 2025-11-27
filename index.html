@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>F.O.C.U.S.</title>
+</head>
+
+<body>
+
+    <!-- TOP NAV (фиксированный сверху, справа можно добавить селектор языка/кнопки) -->
+    <header class="site-header" role="banner">
+        <nav class="top-nav" id="topNav" aria-label="Top navigation">
+            <!-- language switcher placeholder -->
+        </nav>
+    </header>
+
+    <!-- SIDE DOTS NAV (фиксированная правая панель навигации по секциям) -->
+    <nav class="side-dots" aria-label="Sections navigation" role="navigation">
+        <button class="dot" data-target="section-hero" aria-label="Hero section"></button>
+        <button class="dot" data-target="section-team" aria-label="Team section"></button>
+        <button class="dot" data-target="section-resolve" aria-label="Resolve section"></button>
+        <button class="dot" data-target="section-project" aria-label="Project section"></button>
+        <button class="dot" data-target="section-tech" aria-label="Tech section"></button>
+    </nav>
+
+    <!-- MAIN SNAP CONTAINER -->
+    <div class="snap-container" id="snap">
+
+        <!-- HERO -->
+        <section class="snap-section" id="section-hero" aria-label="hero" style="padding: 60px 0;">
+            <div class="hero-section-inner">
+                <div class="hero-top-half">
+                    <div style="text-align:center;">
+                        <img class="intro-img" src="assets/images/intro-salat.png" alt="intro">
+                    </div>
+                </div>
+
+                <div class="hero-bottom-half">
+                    <div class="hero-bottom-content">
+                        <h1 id="hero-title" style="font-size: 36px; margin-bottom: 12px; color: var(--muted);">Система
+                            для
+                            карьерных решений</h1>
+                        <p id="hero-sub" class="lead" style="font-size: 16px; margin-bottom: 16px;">
+                            Персональные шаги для ориентации в поле и карьере с помощью AI.
+                        </p>
+
+                        <div class="cta-row">
+                            <button class="btn" id="btnPlan">Посмотреть реализацию</button>
+                            <button class="btn secondary" id="btnDemo">Демо</button>
+                        </div>
+
+                        <div class="small-cards" aria-hidden="true">
+                            <div class="small-card"><strong>Контекст</strong>
+                                <div style="color:var(--muted);margin-top:6px">Заметки, файлы, источники.</div>
+                            </div>
+                            <div class="small-card"><strong>AI-подсказки</strong>
+                                <div style="color:var(--muted);margin-top:6px">Actionable steps.</div>
+                            </div>
+                            <div class="small-card"><strong>Быстрый MVP</strong>
+                                <div style="color:var(--muted);margin-top:6px">Пилот 6–8 недель.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM -->
+        <section class="snap-section" id="section-team" aria-label="team">
+            <div class="section-inner" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+
+                <div class="team-horizontal" role="list" aria-label="team photos">
+
+                    <!-- Блок одного участника -->
+                    <div class="team-photo" role="listitem">
+                        <img src="assets/images/team/behruz.jpg" alt="Мухаммаджонов Бехруз" />
+                        <div class="team-info">
+                            <h3>Мухаммаджонов Бехруз Тохиржон угли</h3>
+                            <p><strong>Роль:</strong> Team Lead, Backend Developer</p>
+                            <p><strong>Навыки:</strong> Python, C++, JavaScript, Node.js, C#, .NET, ASP.NET, PostgreSQL,
+                                MS SQL Server</p>
+                            <a href="https://beorht.github.io/my_portfolio/" target="_blank"
+                                rel="noopener noreferrer">Портфолио</a>
+                        </div>
+                    </div>
+
+                    <div class="team-photo" role="listitem">
+                        <img src="assets/images/team/bilol.jpg" alt="Нормирзаев Билолиддин" />
+                        <div class="team-info">
+                            <h3>Нормирзаев Билолиддин Анвар угли</h3>
+                            <p><strong>Роль:</strong> FrontEnd Developer</p>
+                            <p><strong>Навыки:</strong> Python, JavaScript, Html, CSS , PostgreSQL, Node.js</p>
+                            <a href="https://github.com/B1l0l1dd1n" target="_blank"
+                                rel="noopener noreferrer">Портфолио</a>
+                        </div>
+                    </div>
+
+                    <div class="team-photo" role="listitem">
+                        <img src="assets/images/team/farruh.png" alt="Мирмахмудов Фаррух" />
+                        <div class="team-info">
+                            <h3>Мирмахмудов Фаррух Боходир угли</h3>
+                            <p><strong>Роль:</strong> UI/UX Designer, Frontend Developer</p>
+                            <p><strong>Навыки:</strong> Python, HTML/CSS, JavaScript, UI/UX Design, Graph Design, Linux
+                                Administration, MySQL</p>
+                            <a href="https://github.com/exfiltrix" target="_blank"
+                                rel="noopener noreferrer">Портфолио</a>
+                        </div>
+                    </div>
+
+                    <div class="team-photo" role="listitem">
+                        <img src="assets/images/team/emir.jpg" alt="Сайдазимов Эмир-Саид" />
+                        <div class="team-info">
+                            <h3>Сайдазимов Эмир-Саид Русланович</h3>
+                            <p><strong>Роль:</strong> Project Manager</p>
+                            <p><strong>Навыки:</strong> 3D-дизайн, графический дизайн, e-commerce (Shopify),
+                                информационная безопасность, Python, HTML/CSS, JavaScript, React, Angular, PostgreSQL,
+                                MySQL, Node.js</p>
+                            <a href="https://github.com/DAKARCHIK" target="_blank"
+                                rel="noopener noreferrer">Портфолио</a>
+                        </div>
+                    </div>
+
+                    <div class="team-photo" role="listitem">
+                        <img src="assets/images/team/akmal.jpg" alt="Иброхимов Акмалхон" />
+                        <div class="team-info">
+                            <h3>Иброхимов Акмалхон Мирзохидович</h3>
+                            <p><strong>Роль:</strong> System Architect</p>
+                            <p><strong>Навыки:</strong> Android (Kotlin, Java), Jetpack Compose, MVVM, Clean
+                                Architecture, Hilt (DI), Retrofit, Room, Paging3, Flow, LiveData, Coroutine, Firebase,
+                                Git, Python, SQL</p>
+                            <a href="https://github.com/AkmalxonIbroximov" target="_blank"
+                                rel="noopener noreferrer">Портфолио</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOLVE - Problem with slide-in Solution -->
+        <section class="snap-section" id="section-resolve" aria-label="Resolve: Problem">
+            <div class="resolve-full" role="region" aria-labelledby="resolve-title">
+                <h2 id="resolve-title" class="sr-only">Проблема и решение</h2>
+
+                <div class="resolve-switcher" id="resolveSwitcher" data-state="problem">
+                    <!-- Problem panel (visible by default) -->
+                    <div class="panel panel-problem" id="panelProblem" aria-hidden="false" tabindex="-1">
+                        <div class="panel-inner">
+                            <h3>Проблема</h3>
+                            <p class="lead">Пользователь теряется в разбросанном контексте: заметки, файлы, цели — всё в
+                                разных местах. Нужен единый, персонализированный шаг за шагом.</p>
+                            <ul>
+                                <li class="lead">Разрозненные источники информации</li>
+                                <li class="lead">Нет понятных последующих действий</li>
+                                <li class="lead">Низкая персонализация рекомендаций</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Solution panel (hidden offscreen right) -->
+                    <div class="panel panel-solution" id="panelSolution" aria-hidden="true" tabindex="-1">
+                        <div class="panel-inner">
+                            <h3>Решение</h3>
+                            <p class="lead">F.O.C.U.S. агрегирует контекст, индексирует и с помощью RAG + embeddings
+                                генерирует четкие actionable steps.</p>
+                            <ol>
+                                <li>Сбор контекста (Drive, Notion, Calendar)</li>
+                                <li>Индексация в vector DB (embeddings)</li>
+                                <li>RAG-пайплайн → персональные шаги</li>
+                            </ol>
+
+                            <div style="margin-top:18px;">
+                                <button id="openSolutionModalBtn" class="big-action-btn" aria-haspopup="dialog"
+                                    aria-controls="modalSolutionDetail">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- toggle control -->
+                <div class="resolve-control">
+                    <button id="resolveToggle" class="resolve-toggle" aria-pressed="false"
+                        aria-controls="resolveSwitcher" title="Показать решение">Показать решение</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT -->
+        <section class="snap-section" id="section-project" aria-label="project">
+            <div class="section-inner">
+                <div class="project-preview">Превью интерфейса / замените iframe</div>
+                <div class="project-meta">
+                    <h2>Отрывок проекта — Demo / MVP</h2>
+                    <p class="lead">MVP: регистрация → подключение источников → анализ контекста → персональный план (5
+                        шагов) → экспорт (Calendar/Slack/email).</p>
+                    <p style="color:var(--muted)">Пример endpoint: POST /api/v1/analyze — возвращает шаги и план
+                        действий.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH -->
+        <section class="snap-section" id="section-tech" aria-label="tech">
+            <div class="section-inner" style="flex-direction:column;align-items:flex-start;">
+                <h2>Tech Stack & Реализация</h2>
+                <div class="tech-grid" style="margin-top:18px">
+                    <div class="tech-card"><strong>Front-end</strong>
+                        <div style="color:var(--muted);margin-top:8px">Next.js, React, TypeScript, Tailwind</div>
+                    </div>
+                    <div class="tech-card"><strong>Back-end</strong>
+                        <div style="color:var(--muted);margin-top:8px">Node.js, PostgreSQL, Redis, Docker</div>
+                    </div>
+                    <div class="tech-card"><strong>AI / ML</strong>
+                        <div style="color:var(--muted);margin-top:8px">OpenAI, embeddings, Pinecone</div>
+                    </div>
+                    <div class="tech-card"><strong>DevOps</strong>
+                        <div style="color:var(--muted);margin-top:8px">Vercel, GitHub Actions, Monitoring</div>
+                    </div>
+                </div>
+                <img style="width: 100px;" src="assets/images/footer-salat.png" alt="footer">
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modals placed at body end for semantics and focus management -->
+    <!-- Modal: Solution — Detailed -->
+    <div id="modalSolutionDetail" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="modalSolutionDetail-title">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-panel" role="document">
+            <button class="modal-close" data-close aria-label="Закрыть">&times;</button>
+
+            <h3 id="modalSolutionDetail-title">Решение — подробности и план</h3>
+
+            <p class="lead">Здесь развёрнутая информация: архитектура, шаги внедрения, риски и оценка сроков.</p>
+
+            <h4>Архитектура</h4>
+            <p style="color:var(--text-muted)">Кратко: frontend (Next/React) + backend (Node.js) + vector DB (Pinecone)
+                +
+                OpenAI embeddings + RAG pipeline.</p>
+
+            <h4 style="margin-top:12px">Пошаговый план (пример)</h4>
+            <ol style="color:var(--text-muted);">
+                <li>Сбор источников и авторизация (2 недели)</li>
+                <li>Пайплайн индексации и embeddings (1–2 недели)</li>
+                <li>RAG-интеграция и тесты (2–3 недели)</li>
+                <li>MVP: UI/UX + экспорт в календарь (2 недели)</li>
+            </ol>
+
+            <p style="color:var(--text-muted); margin-top:12px">Контакты команды и ссылки на репозитории можно добавить
+                здесь.</p>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
