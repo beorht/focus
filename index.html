@@ -20,9 +20,9 @@
     <!-- SIDE DOTS NAV (фиксированная правая панель навигации по секциям) -->
     <nav class="side-dots" aria-label="Sections navigation" role="navigation">
         <button class="dot" data-target="section-hero" aria-label="Hero section"></button>
-        <button class="dot" data-target="section-team" aria-label="Team section"></button>
         <button class="dot" data-target="section-resolve" aria-label="Resolve section"></button>
         <button class="dot" data-target="section-project" aria-label="Project section"></button>
+        <button class="dot" data-target="section-team" aria-label="Team section"></button>
         <button class="dot" data-target="section-tech" aria-label="Tech section"></button>
     </nav>
 
@@ -64,6 +64,68 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOLVE - Problem with slide-in Solution -->
+        <section class="snap-section" id="section-resolve" aria-label="Resolve: Problem">
+            <div class="resolve-full" role="region" aria-labelledby="resolve-title">
+                <h2 id="resolve-title" class="sr-only">Проблема и решение</h2>
+
+                <div class="resolve-switcher" id="resolveSwitcher" data-state="problem">
+                    <!-- Problem panel (visible by default) -->
+                    <div class="panel panel-problem" id="panelProblem" aria-hidden="false" tabindex="-1">
+                        <div class="panel-inner">
+                            <h3>Проблема</h3>
+                            <p class="lead">Пользователь теряется в разбросанном контексте: заметки, файлы, цели — всё в
+                                разных местах. Нужен единый, персонализированный шаг за шагом.</p>
+                            <ul>
+                                <li class="lead">Разрозненные источники информации</li>
+                                <li class="lead">Нет понятных последующих действий</li>
+                                <li class="lead">Низкая персонализация рекомендаций</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Solution panel (hidden offscreen right) -->
+                    <div class="panel panel-solution" id="panelSolution" aria-hidden="true" tabindex="-1">
+                        <div class="panel-inner">
+                            <h3>Решение</h3>
+                            <p class="lead">F.O.C.U.S. агрегирует контекст, индексирует и с помощью RAG + embeddings
+                                генерирует четкие actionable steps.</p>
+                            <ol>
+                                <li>Сбор контекста (Drive, Notion, Calendar)</li>
+                                <li>Индексация в vector DB (embeddings)</li>
+                                <li>RAG-пайплайн → персональные шаги</li>
+                            </ol>
+
+                            <div style="margin-top:18px;">
+                                <button id="openSolutionModalBtn" class="big-action-btn" aria-haspopup="dialog"
+                                    aria-controls="modalSolutionDetail">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- toggle control -->
+                <div class="resolve-control">
+                    <button id="resolveToggle" class="resolve-toggle" aria-pressed="false"
+                        aria-controls="resolveSwitcher" title="Показать решение">Показать решение</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT -->
+        <section class="snap-section" id="section-project" aria-label="project">
+            <div class="section-inner">
+                <div class="project-preview">Превью интерфейса / замените iframe</div>
+                <div class="project-meta">
+                    <h2>Отрывок проекта — Demo / MVP</h2>
+                    <p class="lead">MVP: регистрация → подключение источников → анализ контекста → персональный план (5
+                        шагов) → экспорт (Calendar/Slack/email).</p>
+                    <p style="color:var(--muted)">Пример endpoint: POST /api/v1/analyze — возвращает шаги и план
+                        действий.</p>
                 </div>
             </div>
         </section>
@@ -136,68 +198,6 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </section>
-
-        <!-- RESOLVE - Problem with slide-in Solution -->
-        <section class="snap-section" id="section-resolve" aria-label="Resolve: Problem">
-            <div class="resolve-full" role="region" aria-labelledby="resolve-title">
-                <h2 id="resolve-title" class="sr-only">Проблема и решение</h2>
-
-                <div class="resolve-switcher" id="resolveSwitcher" data-state="problem">
-                    <!-- Problem panel (visible by default) -->
-                    <div class="panel panel-problem" id="panelProblem" aria-hidden="false" tabindex="-1">
-                        <div class="panel-inner">
-                            <h3>Проблема</h3>
-                            <p class="lead">Пользователь теряется в разбросанном контексте: заметки, файлы, цели — всё в
-                                разных местах. Нужен единый, персонализированный шаг за шагом.</p>
-                            <ul>
-                                <li class="lead">Разрозненные источники информации</li>
-                                <li class="lead">Нет понятных последующих действий</li>
-                                <li class="lead">Низкая персонализация рекомендаций</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Solution panel (hidden offscreen right) -->
-                    <div class="panel panel-solution" id="panelSolution" aria-hidden="true" tabindex="-1">
-                        <div class="panel-inner">
-                            <h3>Решение</h3>
-                            <p class="lead">F.O.C.U.S. агрегирует контекст, индексирует и с помощью RAG + embeddings
-                                генерирует четкие actionable steps.</p>
-                            <ol>
-                                <li>Сбор контекста (Drive, Notion, Calendar)</li>
-                                <li>Индексация в vector DB (embeddings)</li>
-                                <li>RAG-пайплайн → персональные шаги</li>
-                            </ol>
-
-                            <div style="margin-top:18px;">
-                                <button id="openSolutionModalBtn" class="big-action-btn" aria-haspopup="dialog"
-                                    aria-controls="modalSolutionDetail">Подробнее</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- toggle control -->
-                <div class="resolve-control">
-                    <button id="resolveToggle" class="resolve-toggle" aria-pressed="false"
-                        aria-controls="resolveSwitcher" title="Показать решение">Показать решение</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECT -->
-        <section class="snap-section" id="section-project" aria-label="project">
-            <div class="section-inner">
-                <div class="project-preview">Превью интерфейса / замените iframe</div>
-                <div class="project-meta">
-                    <h2>Отрывок проекта — Demo / MVP</h2>
-                    <p class="lead">MVP: регистрация → подключение источников → анализ контекста → персональный план (5
-                        шагов) → экспорт (Calendar/Slack/email).</p>
-                    <p style="color:var(--muted)">Пример endpoint: POST /api/v1/analyze — возвращает шаги и план
-                        действий.</p>
                 </div>
             </div>
         </section>
