@@ -10,10 +10,10 @@
 
 <body>
 
-    <!-- TOP NAV -->
+    <!-- TOP NAV
     <header class="site-header" role="banner">
         <nav class="top-nav" id="topNav" aria-label="Top navigation"></nav>
-    </header>
+    </header> -->
 
     <!-- SIDE DOTS NAV (обновлённый порядок секций) -->
     <nav class="side-dots" aria-label="Sections navigation" role="navigation">
@@ -181,61 +181,124 @@
             </div>
         </section>
 
-        <!-- TEAM (предпоследний) -->
-        <section class="snap-section" id="section-team">
-            <div class="section-inner" style="flex-direction:column;align-items:flex-start;gap:20px;">
-                <h2>Команда</h2>
+        <section class="snap-section" id="section-team" aria-label="team">
+            <div class="section-inner" style="flex-direction: column; align-items: flex-start; gap: 32px;">
 
-                <div class="team-horizontal">
-
-                    <div class="team-photo">
-                        <img src="assets/images/team/behruz.jpg" alt="">
-                        <div class="team-info">
-                            <h3>Бехруз</h3>
-                            <p>Team Lead, Backend</p>
-                            <a href="https://beorht.github.io/my_portfolio/">Портфолио</a>
+                <!-- Горизонтальная лента карточек -->
+                <div class="team-horizontal" role="list" aria-label="team members">
+                    <!-- Бехруз -->
+                    <article class="team-photo" role="listitem">
+                        <div class="team-photo-inner">
+                            <div class="team-img-container">
+                                <img src="assets/images/team/behruz.jpg" alt="Мухаммаджонов Бехруз Тохиржон угли">
+                            </div>
+                            <div class="team-info">
+                                <h3 class="team-name">Мухаммаджонов Бехруз Тохиржон угли</h3>
+                                <div class="team-role">Team Lead, Backend Developer</div>
+                                <p class="team-skills">
+                                    <strong>Навыки:</strong>
+                                    Python, C++, JavaScript, Node.js, C#, .NET, ASP.NET, PostgreSQL, MS SQL Server
+                                </p>
+                                <a href="https://beorht.github.io/my_portfolio/" target="_blank"
+                                    rel="noopener noreferrer" class="team-portfolio">
+                                    Портфолио →
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="team-photo">
-                        <img src="assets/images/team/bilol.jpg" alt="">
-                        <div class="team-info">
-                            <h3>Билолиддин</h3>
-                            <p>Frontend</p>
-                            <a href="https://github.com/B1l0l1dd1n">Портфолио</a>
+                    <!-- Билолиддин -->
+                    <article class="team-photo" role="listitem">
+                        <div class="team-photo-inner">
+                            <div class="team-img-container">
+                                <img src="assets/images/team/bilol.jpg" alt="Нормирзаев Билолиддин Анвар угли">
+                            </div>
+                            <div class="team-info">
+                                <h3 class="team-name">Нормирзаев Билолиддин Анвар угли</h3>
+                                <div class="team-role">FrontEnd Developer</div>
+                                <p class="team-skills">
+                                    <strong>Навыки:</strong>
+                                    Python, JavaScript, HTML, CSS, PostgreSQL, Node.js
+                                </p>
+                                <a href="https://github.com/B1l0l1dd1n" target="_blank" rel="noopener noreferrer"
+                                    class="team-portfolio">
+                                    Портфолио →
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="team-photo">
-                        <img src="assets/images/team/farruh.png" alt="">
-                        <div class="team-info">
-                            <h3>Фаррух</h3>
-                            <p>UI/UX, Frontend</p>
-                            <a href="https://github.com/exfiltrix">Портфолио</a>
+                    <!-- Фаррух -->
+                    <article class="team-photo" role="listitem">
+                        <div class="team-photo-inner">
+                            <div class="team-img-container">
+                                <img src="assets/images/team/farruh.png" alt="Мирмахмудов Фаррух Боходир угли">
+                            </div>
+                            <div class="team-info">
+                                <h3 class="team-name">Мирмахмудов Фаррух Боходир угли</h3>
+                                <div class="team-role">UI/UX Designer, Frontend Developer</div>
+                                <p class="team-skills">
+                                    <strong>Навыки:</strong>
+                                    Python, HTML/CSS, JavaScript, UI/UX Design, Graph Design, Linux Administration,
+                                    MySQL
+                                </p>
+                                <a href="https://github.com/exfiltrix" target="_blank" rel="noopener noreferrer"
+                                    class="team-portfolio">
+                                    Портфолио →
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="team-photo">
-                        <img src="assets/images/team/emir.jpg" alt="">
-                        <div class="team-info">
-                            <h3>Эмир-Саид</h3>
-                            <p>Project Manager</p>
-                            <a href="https://github.com/DAKARCHIK">Портфолио</a>
+                    <!-- Эмир-Саид -->
+                    <article class="team-photo" role="listitem">
+                        <div class="team-photo-inner">
+                            <div class="team-img-container">
+                                <img src="assets/images/team/emir.jpg" alt="Сайдазимов Эмир-Саид Русланович">
+                            </div>
+                            <div class="team-info">
+                                <h3 class="team-name">Сайдазимов Эмир-Саид Русланович</h3>
+                                <div class="team-role">Project Manager</div>
+                                <p class="team-skills">
+                                    <strong>Навыки:</strong>
+                                    3D-дизайн, графический дизайн, e-commerce (Shopify),
+                                    информационная безопасность, Python, HTML/CSS, JavaScript,
+                                    React, Angular, PostgreSQL, MySQL, Node.js
+                                </p>
+                                <a href="https://github.com/DAKARCHIK" target="_blank" rel="noopener noreferrer"
+                                    class="team-portfolio">
+                                    Портфолио →
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="team-photo">
-                        <img src="assets/images/team/akmal.jpg" alt="">
-                        <div class="team-info">
-                            <h3>Акмалхон</h3>
-                            <p>System Architect</p>
-                            <a href="https://github.com/AkmalxonIbroximov">Портфолио</a>
+                    <!-- Акмалхон -->
+                    <article class="team-photo" role="listitem">
+                        <div class="team-photo-inner">
+                            <div class="team-img-container">
+                                <img src="assets/images/team/akmal.jpg" alt="Иброхимов Акмалхон Мирзохидович">
+                            </div>
+                            <div class="team-info">
+                                <h3 class="team-name">Иброхимов Акмалхон Мирзохидович</h3>
+                                <div class="team-role">System Architect</div>
+                                <p class="team-skills">
+                                    <strong>Навыки:</strong>
+                                    Android (Kotlin, Java), Jetpack Compose, MVVM, Clean Architecture,
+                                    Hilt, Retrofit, Room, Paging3, Flow, LiveData, Coroutines, Firebase,
+                                    Git, Python, SQL
+                                </p>
+                                <a href="https://github.com/AkmalxonIbroximov" target="_blank" rel="noopener noreferrer"
+                                    class="team-portfolio">
+                                    Портфолио →
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
+                    </article>
                 </div>
             </div>
         </section>
+
 
         <!-- TECH -->
         <section class="snap-section" id="section-tech">

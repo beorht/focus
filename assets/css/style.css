@@ -401,58 +401,103 @@ p.lead {
     border-color: rgba(51, 153, 255, 0.3);
 }
 
-/* TEAM section (упрощён под разметку) */
+/* ================= TEAM — все карточки на одном экране ================= */
+
 .team-horizontal {
     display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    width: 100%;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 4rem;
+    width: 130%;
+    /* немного шире экрана */
+    margin-left: -15%;
+    /* чтобы эффект выхода за край был симметричный */
+    overflow: visible;
+    /* важно — чтобы блоки выходили за рамки */
+    padding-top: 20px;
 }
 
 .team-photo {
-    flex: 1 1 240px;
-    min-width: 220px;
+    flex: 1 1 0;
+    max-width: 320px;
+    /* увеличиваем карточки */
+    transform: scale(1.08);
+    /* карточки больше */
+    display: flex;
+}
+
+.team-photo-inner {
+    width: 100%;
     background: var(--card);
-    border-radius: var(--radius);
-    padding: 1rem;
-    border: 1px solid rgba(51, 153, 255, 0.12);
-    box-shadow: var(--shadow-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
     transition: all 0.3s ease;
+    border: 1px solid rgba(51, 153, 255, 0.15);
     display: flex;
     flex-direction: column;
 }
 
-.team-photo img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: calc(var(--radius) - 4px);
-    margin-bottom: 0.75rem;
-}
-
-.team-photo:hover {
-    transform: translateY(-6px);
+.team-photo-inner:hover {
+    transform: translateY(-12px);
     box-shadow: var(--shadow);
     border-color: rgba(51, 153, 255, 0.3);
 }
 
-.team-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
+/* ФОТО */
+.team-img-container {
+    position: relative;
+    overflow: hidden;
 }
 
-.team-info p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 0.3rem;
+.team-img-container img {
+    width: 100%;
+    height: 260px;
+    /* фото больше */
+    object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
-.team-info a {
-    margin-top: 0.4rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+.team-photo-inner:hover .team-img-container img {
+    transform: scale(1.06);
+}
+
+/* ТЕКСТОВАЯ ЧАСТЬ */
+.team-info {
+    padding: 1.7rem;
+}
+
+.team-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.team-role {
     color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    font-size: 1rem;
+}
+
+.team-skills {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.3rem;
+    line-height: 1.45;
+}
+
+.team-portfolio {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    gap: 0.4rem;
+    transition: all 0.3s ease;
+}
+
+.team-portfolio:hover {
+    gap: 0.7rem;
 }
 
 /* RESOLVE section */
