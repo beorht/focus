@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>F.O.C.U.S.</title>
 </head>
@@ -13,503 +12,275 @@
 
     <!-- TOP NAV -->
     <header class="site-header" role="banner">
-        <nav class="top-nav" id="topNav" aria-label="Top navigation">
-            <div class="logo">
-                <span class="logo-text">F.O.C.U.S.</span>
-            </div>
-            <div class="nav-links">
-                <a href="#section-hero" class="nav-link">Главная</a>
-                <a href="#section-team" class="nav-link">Команда</a>
-                <a href="#section-resolve" class="nav-link">Решение</a>
-                <a href="#section-project" class="nav-link">Проект</a>
-                <a href="#section-tech" class="nav-link">Технологии</a>
-            </div>
-        </nav>
+        <nav class="top-nav" id="topNav" aria-label="Top navigation"></nav>
     </header>
 
-    <!-- SIDE DOTS NAV -->
+    <!-- SIDE DOTS NAV (обновлённый порядок секций) -->
     <nav class="side-dots" aria-label="Sections navigation" role="navigation">
-        <button class="dot" data-target="section-hero" aria-label="Hero section"></button>
-        <button class="dot" data-target="section-team" aria-label="Team section"></button>
-        <button class="dot" data-target="section-resolve" aria-label="Resolve section"></button>
-        <button class="dot" data-target="section-project" aria-label="Project section"></button>
-        <button class="dot" data-target="section-tech" aria-label="Tech section"></button>
+        <button class="dot" data-target="section-hero"></button>
+        <button class="dot" data-target="section-resolve"></button>
+        <button class="dot" data-target="section-finance"></button>
+        <button class="dot" data-target="section-project"></button>
+        <button class="dot" data-target="section-testimonials"></button>
+        <button class="dot" data-target="section-team"></button>
+        <button class="dot" data-target="section-tech"></button>
     </nav>
 
     <!-- MAIN SNAP CONTAINER -->
     <div class="snap-container" id="snap">
 
         <!-- HERO -->
-        <section class="snap-section" id="section-hero" aria-label="hero">
+        <section class="snap-section" id="section-hero" aria-label="hero" style="padding:60px 0;">
             <div class="hero-section-inner">
+
                 <div class="hero-top-half">
-                    <div class="hero-image-container">
+                    <div style="text-align:center;">
                         <img class="intro-img" src="assets/images/intro-salat.png" alt="intro">
-                        <div class="floating-elements">
-                            <div class="floating-element el-1"><i class="fas fa-lightbulb"></i></div>
-                            <div class="floating-element el-2"><i class="fas fa-chart-line"></i></div>
-                            <div class="floating-element el-3"><i class="fas fa-rocket"></i></div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="hero-bottom-half">
                     <div class="hero-bottom-content">
-                        <h1 id="hero-title">Система для карьерных решений</h1>
-                        <p id="hero-sub" class="lead">
+                        <h1 style="font-size:36px;margin-bottom:12px;color:var(--muted)">Система для карьерных решений
+                        </h1>
+                        <p class="lead" style="font-size:16px;margin-bottom:16px;">
                             Персональные шаги для ориентации в поле и карьере с помощью AI.
                         </p>
 
                         <div class="cta-row">
-                            <button class="btn" id="btnPlan">
-                                <span>Посмотреть реализацию</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <button class="btn secondary" id="btnDemo">
-                                <span>Демо</span>
-                                <i class="fas fa-play"></i>
-                            </button>
+                            <button class="btn" id="btnPlan">Посмотреть реализацию</button>
+                            <button class="btn secondary" id="btnDemo">Демо</button>
                         </div>
 
-                        <div class="small-cards" aria-hidden="true">
-                            <div class="small-card">
-                                <div class="card-icon"><i class="fas fa-sticky-note"></i></div>
-                                <strong>Контекст</strong>
-                                <div class="card-desc">Заметки, файлы, источники.</div>
+                        <div class="small-cards">
+                            <div class="small-card"><strong>Контекст</strong>
+                                <div style="margin-top:6px;color:var(--muted);">Заметки, файлы.</div>
                             </div>
-                            <div class="small-card">
-                                <div class="card-icon"><i class="fas fa-robot"></i></div>
-                                <strong>AI-подсказки</strong>
-                                <div class="card-desc">Actionable steps.</div>
+                            <div class="small-card"><strong>AI-подсказки</strong>
+                                <div style="margin-top:6px;color:var(--muted);">Actionable steps.</div>
                             </div>
-                            <div class="small-card">
-                                <div class="card-icon"><i class="fas fa-bolt"></i></div>
-                                <strong>Быстрый MVP</strong>
-                                <div class="card-desc">Пилот 6–8 недель.</div>
+                            <div class="small-card"><strong>MVP</strong>
+                                <div style="margin-top:6px;color:var(--muted);">6–8 недель.</div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- TEAM -->
-        <section class="snap-section" id="section-team" aria-label="team">
-            <div class="section-inner">
-                <div class="section-header">
-                    <h2>Наша команда</h2>
-                    <p class="lead">Профессионалы, объединенные общей целью</p>
-                </div>
-
-                <div class="team-horizontal" role="list" aria-label="team photos">
-                    <div class="team-photo" role="listitem">
-                        <div class="team-photo-inner">
-                            <div class="team-img-container">
-                                <img src="assets/images/team/behruz.jpg" alt="Мухаммаджонов Бехруз" />
-                                <div class="team-overlay">
-                                    <div class="social-links">
-                                        <a href="#"><i class="fab fa-github"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h3>Мухаммаджонов Бехруз</h3>
-                                <p class="team-role">Team Lead, Backend Developer</p>
-                                <p class="team-skills">Python, C++, JavaScript, Node.js, C#, .NET, ASP.NET, PostgreSQL,
-                                    MS SQL Server</p>
-                                <a href="https://beorht.github.io/my_portfolio/" target="_blank"
-                                    rel="noopener noreferrer" class="team-portfolio">
-                                    Портфолио <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-photo" role="listitem">
-                        <div class="team-photo-inner">
-                            <div class="team-img-container">
-                                <img src="assets/images/team/bilol.jpg" alt="Нормирзаев Билолиддин" />
-                                <div class="team-overlay">
-                                    <div class="social-links">
-                                        <a href="#"><i class="fab fa-github"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h3>Нормирзаев Билолиддин</h3>
-                                <p class="team-role">FrontEnd Developer</p>
-                                <p class="team-skills">Python, JavaScript, Html, CSS , PostgreSQL, Node.js</p>
-                                <a href="https://github.com/B1l0l1dd1n" target="_blank" rel="noopener noreferrer"
-                                    class="team-portfolio">
-                                    Портфолио <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-photo" role="listitem">
-                        <div class="team-photo-inner">
-                            <div class="team-img-container">
-                                <img src="assets/images/team/farruh.png" alt="Мирмахмудов Фаррух" />
-                                <div class="team-overlay">
-                                    <div class="social-links">
-                                        <a href="#"><i class="fab fa-github"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h3>Мирмахмудов Фаррух</h3>
-                                <p class="team-role">UI/UX Designer, Frontend Developer</p>
-                                <p class="team-skills">Python, HTML/CSS, JavaScript, UI/UX Design, Graph Design, Linux
-                                    Administration, MySQL</p>
-                                <a href="https://github.com/exfiltrix" target="_blank" rel="noopener noreferrer"
-                                    class="team-portfolio">
-                                    Портфолио <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-photo" role="listitem">
-                        <div class="team-photo-inner">
-                            <div class="team-img-container">
-                                <img src="assets/images/team/emir.jpg" alt="Сайдазимов Эмир-Саид" />
-                                <div class="team-overlay">
-                                    <div class="social-links">
-                                        <a href="#"><i class="fab fa-github"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h3>Сайдазимов Эмир-Саид</h3>
-                                <p class="team-role">Project Manager</p>
-                                <p class="team-skills">3D-дизайн, графический дизайн, e-commerce (Shopify),
-                                    информационная безопасность, Python, HTML/CSS, JavaScript, React, Angular,
-                                    PostgreSQL, MySQL, Node.js</p>
-                                <a href="https://github.com/DAKARCHIK" target="_blank" rel="noopener noreferrer"
-                                    class="team-portfolio">
-                                    Портфолио <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-photo" role="listitem">
-                        <div class="team-photo-inner">
-                            <div class="team-img-container">
-                                <img src="assets/images/team/akmal.jpg" alt="Иброхимов Акмалхон" />
-                                <div class="team-overlay">
-                                    <div class="social-links">
-                                        <a href="#"><i class="fab fa-github"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h3>Иброхимов Акмалхон</h3>
-                                <p class="team-role">System Architect</p>
-                                <p class="team-skills">Android (Kotlin, Java), Jetpack Compose, MVVM, Clean
-                                    Architecture, Hilt (DI), Retrofit, Room, Paging3, Flow, LiveData, Coroutine,
-                                    Firebase, Git, Python, SQL</p>
-                                <a href="https://github.com/AkmalxonIbroximov" target="_blank" rel="noopener noreferrer"
-                                    class="team-portfolio">
-                                    Портфолио <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RESOLVE -->
+        <!-- RESOLVE - Problem with slide-in Solution -->
         <section class="snap-section" id="section-resolve" aria-label="Resolve: Problem">
             <div class="resolve-full" role="region" aria-labelledby="resolve-title">
                 <h2 id="resolve-title" class="sr-only">Проблема и решение</h2>
 
                 <div class="resolve-switcher" id="resolveSwitcher" data-state="problem">
-                    <!-- Problem panel -->
+                    <!-- Панель ПРОБЛЕМЫ -->
                     <div class="panel panel-problem" id="panelProblem" aria-hidden="false" tabindex="-1">
                         <div class="panel-inner">
-                            <div class="panel-header">
-                                <div class="panel-icon">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <h3>Проблема</h3>
-                            </div>
-                            <p class="lead">Пользователь теряется в разбросанном контексте: заметки, файлы, цели — всё в
-                                разных местах. Нужен единый, персонализированный шаг за шагом.</p>
-                            <ul class="problem-list">
-                                <li class="lead"><i class="fas fa-times"></i> Разрозненные источники информации</li>
-                                <li class="lead"><i class="fas fa-times"></i> Нет понятных последующих действий</li>
-                                <li class="lead"><i class="fas fa-times"></i> Низкая персонализация рекомендаций</li>
+                            <h3>Проблема</h3>
+                            <p class="lead">
+                                Пользователь теряется в разбросанном контексте: заметки, файлы, цели — всё в разных
+                                местах.
+                                Нужен единый, персонализированный шаг за шагом.
+                            </p>
+                            <ul>
+                                <li class="lead">Разрозненные источники информации</li>
+                                <li class="lead">Нет понятных последующих действий</li>
+                                <li class="lead">Низкая персонализация рекомендаций</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Solution panel -->
+                    <!-- Панель РЕШЕНИЯ -->
                     <div class="panel panel-solution" id="panelSolution" aria-hidden="true" tabindex="-1">
                         <div class="panel-inner">
-                            <div class="panel-header">
-                                <div class="panel-icon">
-                                    <i class="fas fa-lightbulb"></i>
-                                </div>
-                                <h3>Решение</h3>
-                            </div>
-                            <p class="lead">F.O.C.U.S. агрегирует контекст, индексирует и с помощью RAG + embeddings
-                                генерирует четкие actionable steps.</p>
-                            <ol class="solution-list">
-                                <li><span class="step-number">1</span> Сбор контекста (Drive, Notion, Calendar)</li>
-                                <li><span class="step-number">2</span> Индексация в vector DB (embeddings)</li>
-                                <li><span class="step-number">3</span> RAG-пайплайн → персональные шаги</li>
+                            <h3>Решение</h3>
+                            <p class="lead">
+                                F.O.C.U.S. агрегирует контекст, индексирует и с помощью RAG + embeddings
+                                генерирует четкие actionable steps.
+                            </p>
+                            <ol>
+                                <li>Сбор контекста (Drive, Notion, Calendar)</li>
+                                <li>Индексация в vector DB (embeddings)</li>
+                                <li>RAG-пайплайн → персональные шаги</li>
                             </ol>
 
-                            <div class="solution-action">
+                            <div style="margin-top:18px;">
                                 <button id="openSolutionModalBtn" class="big-action-btn" aria-haspopup="dialog"
-                                    aria-controls="modalSolutionDetail">
-                                    <span>Подробнее</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
+                                    aria-controls="modalSolutionDetail">Подробнее</button>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- toggle control -->
-                <div class="resolve-control">
-                    <button id="resolveToggle" class="resolve-toggle" aria-pressed="false"
-                        aria-controls="resolveSwitcher" title="Показать решение">
-                        <span class="toggle-text">Показать решение</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <!-- КНОПКА-ПЕРЕКЛЮЧАТЕЛЬ -->
+                    <div class="resolve-control">
+                        <button id="resolveToggle" class="resolve-toggle" aria-pressed="false"
+                            aria-controls="resolveSwitcher" title="Показать решение">
+                            Показать решение
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECT -->
-        <section class="snap-section" id="section-project" aria-label="project">
-            <div class="section-inner">
-                <div class="project-visual">
-                    <div class="project-preview">
-                        <div class="browser-mockup">
-                            <div class="browser-header">
-                                <div class="browser-dots">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="browser-content">
-                                <div class="app-interface">
-                                    <div class="app-sidebar">
-                                        <div class="sidebar-item active"><i class="fas fa-home"></i></div>
-                                        <div class="sidebar-item"><i class="fas fa-chart-bar"></i></div>
-                                        <div class="sidebar-item"><i class="fas fa-cog"></i></div>
-                                    </div>
-                                    <div class="app-main">
-                                        <div class="app-header">Персональный план развития</div>
-                                        <div class="app-content">
-                                            <div class="task-item">
-                                                <div class="task-checkbox"><i class="fas fa-check"></i></div>
-                                                <div class="task-text">Анализ текущих навыков</div>
-                                            </div>
-                                            <div class="task-item">
-                                                <div class="task-checkbox"><i class="fas fa-check"></i></div>
-                                                <div class="task-text">Изучение рынка труда</div>
-                                            </div>
-                                            <div class="task-item active">
-                                                <div class="task-checkbox"></div>
-                                                <div class="task-text">Составление резюме</div>
-                                            </div>
-                                            <div class="task-item">
-                                                <div class="task-checkbox"></div>
-                                                <div class="task-text">Подготовка к собеседованию</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- FINANCIAL SECTION -->
+        <section class="snap-section" id="section-finance">
+            <div class="section-inner" style="flex-direction:row;align-items:flex-start;gap:32px;">
+                <div style="flex:1;">
+                    <h2>Финансовая часть</h2>
+                    <p class="lead">Прозрачная финансовая модель для запуска MVP и масштабирования.</p>
+                </div>
+
+                <div style="flex:1;display:grid;gap:14px;">
+                    <div class="tech-card"><strong>Разработка MVP</strong>
+                        <p style="margin-top:6px;">Команда на 6–8 недель.</p>
                     </div>
-                    <div class="floating-shapes">
-                        <div class="shape shape-1"></div>
-                        <div class="shape shape-2"></div>
-                        <div class="shape shape-3"></div>
+                    <div class="tech-card"><strong>Инфраструктура</strong>
+                        <p style="margin-top:6px;">Хостинг, БД, vector DB.</p>
+                    </div>
+                    <div class="tech-card"><strong>AI-запросы</strong>
+                        <p style="margin-top:6px;">LLM + embeddings.</p>
+                    </div>
+                    <div class="tech-card"><strong>Поддержка</strong>
+                        <p style="margin-top:6px;">Развитие и оптимизация.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- PROJECT / MVP -->
+        <section class="snap-section" id="section-project">
+            <div class="section-inner">
+                <div class="project-preview">Превью интерфейса / iframe</div>
                 <div class="project-meta">
-                    <h2>Отрывок проекта — Demo / MVP</h2>
-                    <p class="lead">MVP: регистрация → подключение источников → анализ контекста → персональный план (5
-                        шагов) → экспорт (Calendar/Slack/email).</p>
-                    <p class="project-detail">Пример endpoint: POST /api/v1/analyze — возвращает шаги и план действий.
-                    </p>
-                    <div class="project-stats">
-                        <div class="stat">
-                            <div class="stat-value">5</div>
-                            <div class="stat-label">шагов к цели</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">8</div>
-                            <div class="stat-label">недель разработки</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">3</div>
-                            <div class="stat-label">источника данных</div>
+                    <h2>Demo / MVP</h2>
+                    <p class="lead">Регистрация → подключение источников → анализ → персональные шаги → экспорт.</p>
+                    <p style="color:var(--muted)">POST /api/v1/analyze — возвращает план действий.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="snap-section" id="section-testimonials">
+            <div class="section-inner" style="flex-direction:column;gap:20px;align-items:flex-start;">
+                <h2>Отзывы</h2>
+                <p class="lead">Примеры обратной связи от пользователей и стейкхолдеров.</p>
+
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;">
+                    <div class="tech-card"><strong>Карьерный коуч</strong>
+                        <p style="margin-top:6px;">«F.O.C.U.S. собирает хаос в один план».</p>
+                    </div>
+                    <div class="tech-card"><strong>Middle-специалист</strong>
+                        <p style="margin-top:6px;">«Экономит время — шаги понятны».</p>
+                    </div>
+                    <div class="tech-card"><strong>HR</strong>
+                        <p style="margin-top:6px;">«Хорошо связывает цели и действия».</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM (предпоследний) -->
+        <section class="snap-section" id="section-team">
+            <div class="section-inner" style="flex-direction:column;align-items:flex-start;gap:20px;">
+                <h2>Команда</h2>
+
+                <div class="team-horizontal">
+
+                    <div class="team-photo">
+                        <img src="assets/images/team/behruz.jpg" alt="">
+                        <div class="team-info">
+                            <h3>Бехруз</h3>
+                            <p>Team Lead, Backend</p>
+                            <a href="https://beorht.github.io/my_portfolio/">Портфолио</a>
                         </div>
                     </div>
+
+                    <div class="team-photo">
+                        <img src="assets/images/team/bilol.jpg" alt="">
+                        <div class="team-info">
+                            <h3>Билолиддин</h3>
+                            <p>Frontend</p>
+                            <a href="https://github.com/B1l0l1dd1n">Портфолио</a>
+                        </div>
+                    </div>
+
+                    <div class="team-photo">
+                        <img src="assets/images/team/farruh.png" alt="">
+                        <div class="team-info">
+                            <h3>Фаррух</h3>
+                            <p>UI/UX, Frontend</p>
+                            <a href="https://github.com/exfiltrix">Портфолио</a>
+                        </div>
+                    </div>
+
+                    <div class="team-photo">
+                        <img src="assets/images/team/emir.jpg" alt="">
+                        <div class="team-info">
+                            <h3>Эмир-Саид</h3>
+                            <p>Project Manager</p>
+                            <a href="https://github.com/DAKARCHIK">Портфолио</a>
+                        </div>
+                    </div>
+
+                    <div class="team-photo">
+                        <img src="assets/images/team/akmal.jpg" alt="">
+                        <div class="team-info">
+                            <h3>Акмалхон</h3>
+                            <p>System Architect</p>
+                            <a href="https://github.com/AkmalxonIbroximov">Портфолио</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <!-- TECH -->
-        <section class="snap-section" id="section-tech" aria-label="tech">
-            <div class="section-inner">
-                <div class="tech-content">
-                    <h2>Tech Stack & Реализация</h2>
-                    <p class="lead">Современный технологический стек для создания масштабируемого и производительного
-                        решения</p>
+        <section class="snap-section" id="section-tech">
+            <div class="section-inner" style="flex-direction:column;align-items:flex-start;">
+                <h2>Tech Stack</h2>
 
-                    <div class="tech-grid">
-                        <div class="tech-card">
-                            <div class="tech-icon">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <div class="tech-info">
-                                <strong>Front-end</strong>
-                                <div class="tech-desc">Next.js, React, TypeScript, Tailwind</div>
-                            </div>
-                        </div>
-                        <div class="tech-card">
-                            <div class="tech-icon">
-                                <i class="fas fa-server"></i>
-                            </div>
-                            <div class="tech-info">
-                                <strong>Back-end</strong>
-                                <div class="tech-desc">Node.js, PostgreSQL, Redis, Docker</div>
-                            </div>
-                        </div>
-                        <div class="tech-card">
-                            <div class="tech-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <div class="tech-info">
-                                <strong>AI / ML</strong>
-                                <div class="tech-desc">OpenAI, embeddings, Pinecone</div>
-                            </div>
-                        </div>
-                        <div class="tech-card">
-                            <div class="tech-icon">
-                                <i class="fas fa-cloud"></i>
-                            </div>
-                            <div class="tech-info">
-                                <strong>DevOps</strong>
-                                <div class="tech-desc">Vercel, GitHub Actions, Monitoring</div>
-                            </div>
-                        </div>
+                <div class="tech-grid">
+                    <div class="tech-card"><strong>Frontend</strong>
+                        <div>Next.js, React, TS, Tailwind</div>
                     </div>
-
-                    <div class="tech-footer">
-                        <img class="footer-logo" src="assets/images/footer-salat.png" alt="footer">
-                        <p class="tech-tagline">Современные технологии для вашего карьерного роста</p>
+                    <div class="tech-card"><strong>Backend</strong>
+                        <div>Node.js, PostgreSQL, Redis, Docker</div>
+                    </div>
+                    <div class="tech-card"><strong>AI / ML</strong>
+                        <div>OpenAI, Pinecone</div>
+                    </div>
+                    <div class="tech-card"><strong>DevOps</strong>
+                        <div>Vercel, GitHub Actions</div>
                     </div>
                 </div>
+
+                <img style="width: 100px;margin-top:20px;" src="assets/images/footer-salat.png" alt="footer">
             </div>
         </section>
 
     </div>
 
-    <!-- Modal: Solution — Detailed -->
-    <div id="modalSolutionDetail" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
-        aria-labelledby="modalSolutionDetail-title">
+    <!-- Modal: Solution Detailed -->
+    <div id="modalSolutionDetail" class="modal" aria-hidden="true">
         <div class="modal-backdrop" data-close></div>
-        <div class="modal-panel" role="document">
-            <button class="modal-close" data-close aria-label="Закрыть">&times;</button>
+        <div class="modal-panel">
+            <button class="modal-close" data-close>&times;</button>
+            <h3>Решение — подробности</h3>
+            <p class="lead">Развёрнутые детали и архитектура.</p>
 
-            <h3 id="modalSolutionDetail-title">Решение — подробности и план</h3>
+            <h4>Архитектура</h4>
+            <p style="color:var(--text-muted)">Frontend (Next.js) + Backend (Node.js) + vector DB + RAG.</p>
 
-            <p class="lead">Здесь развёрнутая информация: архитектура, шаги внедрения, риски и оценка сроков.</p>
-
-            <div class="modal-content">
-                <div class="modal-section">
-                    <h4>Архитектура</h4>
-                    <p>Кратко: frontend (Next/React) + backend (Node.js) + vector DB (Pinecone) + OpenAI embeddings +
-                        RAG pipeline.</p>
-                    <div class="architecture-diagram">
-                        <div class="arch-step">
-                            <div class="arch-icon"><i class="fas fa-database"></i></div>
-                            <div class="arch-text">Сбор данных</div>
-                        </div>
-                        <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
-                        <div class="arch-step">
-                            <div class="arch-icon"><i class="fas fa-cogs"></i></div>
-                            <div class="arch-text">Обработка</div>
-                        </div>
-                        <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
-                        <div class="arch-step">
-                            <div class="arch-icon"><i class="fas fa-brain"></i></div>
-                            <div class="arch-text">AI анализ</div>
-                        </div>
-                        <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
-                        <div class="arch-step">
-                            <div class="arch-icon"><i class="fas fa-chart-line"></i></div>
-                            <div class="arch-text">Результаты</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-section">
-                    <h4>Пошаговый план (пример)</h4>
-                    <ol class="implementation-steps">
-                        <li>
-                            <div class="step-marker">1</div>
-                            <div class="step-content">
-                                <strong>Сбор источников и авторизация</strong>
-                                <span>2 недели</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-marker">2</div>
-                            <div class="step-content">
-                                <strong>Пайплайн индексации и embeddings</strong>
-                                <span>1–2 недели</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-marker">3</div>
-                            <div class="step-content">
-                                <strong>RAG-интеграция и тесты</strong>
-                                <span>2–3 недели</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-marker">4</div>
-                            <div class="step-content">
-                                <strong>MVP: UI/UX + экспорт в календарь</strong>
-                                <span>2 недели</span>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-
-                <div class="modal-section">
-                    <h4>Команда и контакты</h4>
-                    <p>Контакты команды и ссылки на репозитории можно добавить здесь.</p>
-                    <div class="contact-links">
-                        <a href="#" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#" class="contact-link"><i class="fab fa-figma"></i> Figma</a>
-                        <a href="#" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
-                    </div>
-                </div>
-            </div>
+            <h4 style="margin-top:12px;">План</h4>
+            <ol style="color:var(--text-muted);">
+                <li>Сбор источников</li>
+                <li>Индексация</li>
+                <li>RAG-интеграция</li>
+                <li>MVP UI/UX</li>
+            </ol>
         </div>
     </div>
 

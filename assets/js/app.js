@@ -1,25 +1,28 @@
 // app.js — side-dots, snap navigation, resolve toggle, solution modal
 (function () {
     function init() {
-        // --- helpers / elements ---
         const container = document.getElementById('snap') || document.scrollingElement || document.documentElement;
         const dots = Array.from(document.querySelectorAll('.side-dots .dot'));
         const sections = dots.map(d => document.getElementById(d.dataset.target)).filter(Boolean);
 
-        // Если секций нет — выходим
         if (!sections.length) return;
 
-        let currentIndex = 0;
+        // CTA-кнопки
+        const btnPlan = document.getElementById('btnPlan');
+        const btnDemo = document.getElementById('btnDemo');
 
-        // Resolve panel elements
+        // Resolve panel
         const switcher = document.getElementById('resolveSwitcher');
         const resolveBtn = document.getElementById('resolveToggle');
         const panelProblem = document.getElementById('panelProblem');
         const panelSolution = document.getElementById('panelSolution');
 
-        // Modal elements
+        // Modal
         const openSolutionModalBtn = document.getElementById('openSolutionModalBtn');
         const modalSolutionDetail = document.getElementById('modalSolutionDetail');
+
+        let currentIndex = 0;
+        let scrollSyncRaf = null;
 
         // --- helpers ---
 
@@ -31,37 +34,86 @@
             });
         }
 
+        function getScrollTop() {
+            if (container === document.scrollingElement || container === document.documentElement) {
+                return window.scrollY || window.pageYOffset || 0;
+            }
+            return container.scrollTop;
+        }
+
         function goToSection(index) {
             if (index < 0 || index >= sections.length) return;
             currentIndex = index;
             const sec = sections[index];
-
-            if (container === document.scrollingElement || container === document.documentElement) {
-                sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                container.scrollTo({ top: sec.offsetTop, behavior: 'smooth' });
-            }
-
+            sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
             setActiveDot(index);
         }
 
-        // Инициализация позиции
-        goToSection(0);
+        function findNearestSectionIndex() {
+            const st = getScrollTop();
+            let best = 0;
+            let bestDist = Infinity;
+            sections.forEach((sec, i) => {
+                const top = sec.offsetTop;
+                const dist = Math.abs(top - st);
+                if (dist < bestDist) {
+                    bestDist = dist;
+                    best = i;
+                }
+            });
+            return best;
+        }
+
+        function syncCurrentFromScroll() {
+            if (scrollSyncRaf !== null) return;
+            scrollSyncRaf = window.requestAnimationFrame(() => {
+                scrollSyncRaf = null;
+                const idx = findNearestSectionIndex();
+                if (idx !== currentIndex) {
+                    currentIndex = idx;
+                    setActiveDot(idx);
+                }
+            });
+        }
+
+        // --- инициализация позиции/точки ---
+        (function initPosition() {
+            const idx = findNearestSectionIndex();
+            currentIndex = idx;
+            setActiveDot(idx);
+            // мягко доводим до ближайшего блока при загрузке
+            sections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        })();
 
         // --- Side dots navigation ---
-
         dots.forEach((dot, idx) => {
             dot.addEventListener('click', () => {
                 goToSection(idx);
             });
         });
 
-        // Keyboard nav (arrows/page/home/end)
+        // --- CTA hero buttons ---
+        if (btnPlan) {
+            btnPlan.addEventListener('click', () => {
+                const targetIndex = sections.findIndex(sec => sec && sec.id === 'section-resolve');
+                if (targetIndex !== -1) goToSection(targetIndex);
+            });
+        }
+
+        if (btnDemo) {
+            btnDemo.addEventListener('click', () => {
+                const targetIndex = sections.findIndex(sec => sec && sec.id === 'section-project');
+                if (targetIndex !== -1) goToSection(targetIndex);
+            });
+        }
+
+        // --- Keyboard nav ---
         window.addEventListener('keydown', (e) => {
             const keys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'];
             if (!keys.includes(e.key)) return;
             const tag = (document.activeElement && document.activeElement.tagName) || '';
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(tag)) return;
+
             e.preventDefault();
 
             if (e.key === 'ArrowDown' || e.key === 'PageDown') {
@@ -75,58 +127,69 @@
             }
         });
 
-        // Wheel snapping: строго одна секция за жест
+        // --- Scroll sync (если тянут вручную) ---
+        container.addEventListener('scroll', syncCurrentFromScroll, { passive: true });
+
+        // --- Wheel snapping: ОДНА секция за жест ---
         (function wheelGuard() {
-            let isLocked = false;
-            const threshold = 25; // чувствительность колеса
+            const threshold = 25;
+            let lastStepTime = 0;
+            const STEP_COOLDOWN = 900; // мс между шагами (убирает "перелистывание")
 
             container.addEventListener('wheel', (e) => {
-                if (isLocked) {
-                    e.preventDefault();
-                    return;
-                }
-
-                const delta = e.deltaY;
-
+                const delta = e.deltaY || 0;
                 if (Math.abs(delta) < threshold) return;
 
-                // полностью отключаем нативный скролл и инерцию
+                // полностью гасим нативный скролл
                 e.preventDefault();
 
-                isLocked = true;
+                const now = Date.now();
+                if (now - lastStepTime < STEP_COOLDOWN) return;
+                lastStepTime = now;
+
+                // перед шагом синхронизируемся с реальной позицией
+                const nearest = findNearestSectionIndex();
+                currentIndex = nearest;
+
                 const dir = delta > 0 ? 1 : -1;
                 const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + dir));
-
                 if (targetIndex !== currentIndex) {
                     goToSection(targetIndex);
                 }
-
-                // блокируем повторные срабатывания, пока идёт плавный скролл
-                setTimeout(() => {
-                    isLocked = false;
-                }, 700);
             }, { passive: false });
         })();
 
-        // Touch swipe support (также +- 1 секция)
+        // --- Touch swipe: тоже по одной секции ---
         (function touchGuard() {
             let startY = null;
             const threshold = 40;
+            let lastSwipeTime = 0;
+            const SWIPE_COOLDOWN = 700;
+
             window.addEventListener('touchstart', (e) => {
                 if (e.touches && e.touches.length) startY = e.touches[0].clientY;
             }, { passive: true });
+
             window.addEventListener('touchend', (e) => {
                 if (startY === null) return;
                 const endY = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : 0;
                 const diff = startY - endY;
-                if (Math.abs(diff) < threshold) { startY = null; return; }
+                startY = null;
 
-                if (diff > 0) { // swipe up -> next
+                if (Math.abs(diff) < threshold) return;
+
+                const now = Date.now();
+                if (now - lastSwipeTime < SWIPE_COOLDOWN) return;
+                lastSwipeTime = now;
+
+                const nearest = findNearestSectionIndex();
+                currentIndex = nearest;
+
+                if (diff > 0) {
                     goToSection(Math.min(dots.length - 1, currentIndex + 1));
-                } else { // swipe down -> prev
+                } else {
                     goToSection(Math.max(0, currentIndex - 1));
                 }
-                startY = null;
             }, { passive: true });
         })();
 
@@ -140,12 +203,13 @@
                 resolveBtn.textContent = 'Показать решение';
                 panelProblem.focus({ preventScroll: true });
             }
+
             function setToSolution() {
                 switcher.setAttribute('data-state', 'solution');
                 panelProblem.setAttribute('aria-hidden', 'true');
                 panelSolution.setAttribute('aria-hidden', 'false');
                 resolveBtn.setAttribute('aria-pressed', 'true');
-                resolveBtn.textContent = 'Закрыть решение';
+                resolveBtn.textContent = 'Назад в проблемы';
                 panelSolution.focus({ preventScroll: true });
             }
 
@@ -154,7 +218,8 @@
 
             resolveBtn.addEventListener('click', () => {
                 const state = switcher.getAttribute('data-state');
-                if (state === 'problem') setToSolution(); else setToProblem();
+                if (state === 'problem') setToSolution();
+                else setToProblem();
             });
 
             resolveBtn.addEventListener('keydown', (e) => {
@@ -164,17 +229,20 @@
                 }
             });
 
-            // ESC closes solution
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') setToProblem();
             });
 
-            // Reset to problem when leaving section
             const resolveSection = document.getElementById('section-resolve');
             if (resolveSection && 'IntersectionObserver' in window) {
                 const ro = new IntersectionObserver(entries => {
-                    entries.forEach(en => { if (!en.isIntersecting) setToProblem(); });
-                }, { root: null, threshold: 0.2 });
+                    entries.forEach(en => {
+                        if (!en.isIntersecting) setToProblem();
+                    });
+                }, {
+                    root: container === document.documentElement ? null : container,
+                    threshold: 0.2
+                });
                 ro.observe(resolveSection);
             }
         }
@@ -190,6 +258,7 @@
                 if (focusable) focusable.focus();
                 trapFocus(m);
             }
+
             function closeModal(m) {
                 m.setAttribute('aria-hidden', 'true');
                 releaseFocusTrap(m);
@@ -198,30 +267,49 @@
 
             opener.addEventListener('click', () => openModal(modal));
 
-            modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => closeModal(modal)));
-            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+            modal.querySelectorAll('[data-close]').forEach(el =>
+                el.addEventListener('click', () => closeModal(modal))
+            );
 
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal(modal);
+            modal.addEventListener('click', (e) => {
+                if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
+                    closeModal(modal);
+                }
             });
 
-            // focus trap helpers
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+                    closeModal(modal);
+                }
+            });
+
             function trapFocus(m) {
-                const focusables = Array.from(m.querySelectorAll('button, [href], input, textarea, [tabindex]:not([tabindex="-1"])'))
+                const focusables = Array
+                    .from(m.querySelectorAll('button, [href], input, textarea, [tabindex]:not([tabindex="-1"])'))
                     .filter(el => !el.hasAttribute('disabled'));
                 if (!focusables.length) return;
-                const first = focusables[0], last = focusables[focusables.length - 1];
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+
                 function handle(e) {
                     if (e.key !== 'Tab') return;
                     if (e.shiftKey) {
-                        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+                        if (document.activeElement === first) {
+                            e.preventDefault();
+                            last.focus();
+                        }
                     } else {
-                        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+                        if (document.activeElement === last) {
+                            e.preventDefault();
+                            first.focus();
+                        }
                     }
                 }
+
                 m.__trap = handle;
                 m.addEventListener('keydown', handle);
             }
+
             function releaseFocusTrap(m) {
                 if (!m.__trap) return;
                 m.removeEventListener('keydown', m.__trap);
@@ -232,7 +320,7 @@
         // remove legacy canvas element if present (safety)
         const oldCanvas = document.getElementById('focAI');
         if (oldCanvas) {
-            try { oldCanvas.remove(); } catch (e) { /* ignore */ }
+            try { oldCanvas.remove(); } catch (e) { }
         }
     }
 

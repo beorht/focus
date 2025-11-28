@@ -15,9 +15,6 @@
     --shadow-light: 0 5px 15px rgba(2, 12, 27, 0.5);
     --text: #e6f7ff;
     --text-muted: #8fb3d5;
-    --success: #4caf50;
-    --warning: #ff9800;
-    --error: #f44336;
 }
 
 /* Reset */
@@ -64,48 +61,62 @@ a {
     overflow: hidden;
 }
 
-/* Background elements for sections */
+/* Background accents per section */
 .snap-section::before {
     content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 260px;
+    height: 260px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--glass-light) 0%, transparent 70%);
     z-index: -1;
 }
 
 #section-hero::before {
-    top: -150px;
-    right: -150px;
-    width: 500px;
-    height: 500px;
-}
-
-#section-team::before {
-    bottom: -150px;
-    left: -150px;
-    width: 400px;
-    height: 400px;
+    top: -120px;
+    right: -120px;
+    width: 420px;
+    height: 420px;
 }
 
 #section-resolve::before {
     top: 50%;
-    left: -100px;
+    left: -120px;
     transform: translateY(-50%);
 }
 
+#section-finance::before {
+    bottom: -140px;
+    right: -140px;
+    width: 360px;
+    height: 360px;
+}
+
 #section-project::before {
-    bottom: -100px;
-    right: -100px;
-    width: 300px;
-    height: 300px;
+    top: -100px;
+    left: -100px;
+    width: 280px;
+    height: 280px;
+}
+
+#section-testimonials::before {
+    bottom: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#section-team::before {
+    top: -140px;
+    right: -140px;
+    width: 360px;
+    height: 360px;
 }
 
 #section-tech::before {
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -140px;
+    right: -100px;
+    width: 320px;
+    height: 320px;
 }
 
 /* Section inner content */
@@ -118,15 +129,9 @@ a {
     justify-content: space-between;
 }
 
-.section-header {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
 /* Typography */
 h1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
@@ -136,7 +141,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     margin-bottom: 1rem;
     color: var(--text);
     font-weight: 700;
@@ -149,13 +154,13 @@ h3 {
 }
 
 p.lead {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--text-muted);
     max-width: 700px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-/* TOP NAV */
+/* TOP NAV (минимальный, без лишнего) */
 .site-header {
     position: fixed;
     top: 0;
@@ -163,58 +168,19 @@ p.lead {
     width: 100%;
     z-index: 1000;
     padding: 1rem 2rem;
+    pointer-events: none;
 }
 
 .top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0.75rem 1.5rem;
-    background: rgba(10, 25, 41, 0.8);
+    background: rgba(10, 25, 41, 0.85);
     backdrop-filter: blur(10px);
     border-radius: var(--radius);
-    border: 1px solid rgba(51, 153, 255, 0.1);
-    box-shadow: var(--shadow);
-}
-
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-link {
-    position: relative;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--accent);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-gradient);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
+    border: 1px solid rgba(51, 153, 255, 0.15);
+    box-shadow: var(--shadow-light);
+    pointer-events: auto;
 }
 
 /* SIDE DOTS NAV */
@@ -297,11 +263,6 @@ p.lead {
     min-height: 50%;
 }
 
-.hero-image-container {
-    position: relative;
-    text-align: center;
-}
-
 .intro-img {
     width: 100%;
     max-width: 800px;
@@ -316,62 +277,10 @@ p.lead {
         opacity: 0;
         transform: translateY(50px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-.floating-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.floating-element {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(51, 153, 255, 0.2);
-    color: var(--accent);
-    font-size: 1.5rem;
-    animation: float 6s ease-in-out infinite;
-    box-shadow: var(--shadow-light);
-}
-
-.floating-element.el-1 {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.floating-element.el-2 {
-    top: 20%;
-    right: 15%;
-    animation-delay: 2s;
-}
-
-.floating-element.el-3 {
-    bottom: 15%;
-    left: 20%;
-    animation-delay: 4s;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(10deg);
     }
 }
 
@@ -391,6 +300,7 @@ p.lead {
         opacity: 0;
         transform: translateX(-50px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -402,24 +312,25 @@ p.lead {
     width: 100%;
 }
 
+/* CTA + small cards */
 .cta-row {
     display: flex;
     gap: 1rem;
-    margin: 2rem 0;
+    margin: 1.5rem 0 2rem;
 }
 
 .btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     background: var(--accent-gradient);
     color: white;
-    padding: 1rem 2rem;
+    padding: 0.9rem 1.8rem;
     border-radius: var(--radius);
     font-weight: 600;
     cursor: pointer;
     border: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
     position: relative;
@@ -460,20 +371,28 @@ p.lead {
 .small-cards {
     display: flex;
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     width: 100%;
-    justify-content: space-between;
 }
 
 .small-card {
     flex: 1;
     background: var(--card);
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     border-radius: var(--radius);
-    border: 1px solid rgba(51, 153, 255, 0.1);
+    border: 1px solid rgba(51, 153, 255, 0.12);
     transition: all 0.3s ease;
-    text-align: center;
     min-width: 0;
+}
+
+.small-card strong {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.small-card>div {
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 .small-card:hover {
@@ -482,140 +401,58 @@ p.lead {
     border-color: rgba(51, 153, 255, 0.3);
 }
 
-.card-icon {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 1rem;
-}
-
-.card-desc {
-    color: var(--text-muted);
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-}
-
-/* TEAM section */
+/* TEAM section (упрощён под разметку) */
 .team-horizontal {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
     flex-wrap: wrap;
 }
 
 .team-photo {
-    flex: 1 1 280px;
-    display: flex;
-    min-width: 250px;
-}
-
-.team-photo-inner {
-    width: 100%;
+    flex: 1 1 240px;
+    min-width: 220px;
     background: var(--card);
     border-radius: var(--radius);
-    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid rgba(51, 153, 255, 0.12);
+    box-shadow: var(--shadow-light);
     transition: all 0.3s ease;
-    border: 1px solid rgba(51, 153, 255, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
-.team-photo-inner:hover {
-    transform: translateY(-10px);
+.team-photo img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 4px);
+    margin-bottom: 0.75rem;
+}
+
+.team-photo:hover {
+    transform: translateY(-6px);
     box-shadow: var(--shadow);
     border-color: rgba(51, 153, 255, 0.3);
 }
 
-.team-img-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.team-img-container img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.team-photo-inner:hover .team-img-container img {
-    transform: scale(1.05);
-}
-
-.team-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 25, 41, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.team-photo-inner:hover .team-overlay {
-    opacity: 1;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-links a {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--glass);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text);
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    background: var(--accent);
-    transform: translateY(-3px);
-}
-
-.team-info {
-    padding: 1.5rem;
-}
-
 .team-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--text);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
 }
 
-.team-role {
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+.team-info p {
     font-size: 0.9rem;
-}
-
-.team-skills {
     color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
+    margin-bottom: 0.3rem;
 }
 
-.team-portfolio {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--accent);
-    font-weight: 600;
+.team-info a {
+    margin-top: 0.4rem;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.team-portfolio:hover {
-    gap: 0.7rem;
+    font-weight: 600;
+    color: var(--accent);
 }
 
 /* RESOLVE section */
@@ -639,21 +476,217 @@ p.lead {
     overflow: hidden;
 }
 
+/* Внешний контейнер: одна карта + кнопка, кнопка торчит наружу */
 .resolve-switcher {
     width: min(1100px, 94%);
     max-width: 1100px;
     height: 70vh;
-    min-height: 400px;
-    display: flex;
+    min-height: 380px;
     position: relative;
-    overflow: hidden;
     border-radius: var(--radius-lg);
     background: var(--card);
     box-shadow: var(--shadow);
+    overflow: hidden;
+    /* режем всё, кроме текущей панели */
+}
+
+/* Две панели лежат друг над другом, как overlay */
+.resolve-switcher .panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+/* Базовые состояния (на всякий случай) */
+.panel-problem {
+    background: var(--card);
+}
+
+.panel-solution {
+    background: var(--card-light);
+}
+
+.panel-inner {
+    width: 100%;
+    max-width: 700px;
+    color: var(--text);
+}
+
+.panel-inner h3 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.panel-inner p.lead {
+    margin-bottom: 1rem;
+}
+
+/* Состояние: показываем ПРОБЛЕМУ */
+.resolve-switcher[data-state="problem"] .panel-problem {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition-delay: 0.1s;
+    /* чуть позже включаем, чтобы не мигало */
+}
+
+.resolve-switcher[data-state="problem"] .panel-solution {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(40px);
+    /* спрятана справа + прозрачна */
+    transition-delay: 0s;
+}
+
+/* Состояние: показываем РЕШЕНИЕ */
+.resolve-switcher[data-state="solution"] .panel-problem {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-40px);
+    /* проблема уезжает влево и исчезает */
+    transition-delay: 0s;
+}
+
+.resolve-switcher[data-state="solution"] .panel-solution {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    /* решение выезжает с права на центр */
+    transition-delay: 0.15s;
+    /* появляется чуть позже, когда проблема уже почти ушла */
+}
+
+/* Кнопка-переключатель, наполовину снаружи */
+.resolve-control {
+    position: absolute;
+    right: -18px;
+    /* торчит наружу */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.resolve-toggle {
+    padding: 0.9rem 1.3rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    background: var(--accent-gradient);
+    color: white;
+    box-shadow: var(--shadow);
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.resolve-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
+}
+
+/* большая кнопка "Подробнее" */
+.big-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-gradient);
+    color: white;
+    padding: 0.9rem 1.7rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.big-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
+}
+
+/* mobile-адаптация */
+@media (max-width: 880px) {
+    .resolve-switcher {
+        width: 100%;
+        height: auto;
+        min-height: 420px;
+        border-radius: 0;
+    }
+
+    .resolve-switcher .panel {
+        padding: 2rem 1.5rem;
+    }
+
+    .resolve-control {
+        right: 50%;
+        transform: translate(50%, 0);
+        top: auto;
+        bottom: 1.5rem;
+    }
+}
+
+/* RESOLVE section */
+.resolve-full {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* ВНЕШНИЙ контейнер: держит трек + кнопку, кнопка может торчать */
+.resolve-switcher {
+    width: min(1100px, 94%);
+    max-width: 1100px;
+    height: 70vh;
+    min-height: 380px;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    box-shadow: var(--shadow);
+    overflow: visible;
+    /* для кнопки справа */
+}
+
+/* ВНУТРЕННИЙ ТРЕК: две панели в линию, режем overflow здесь */
+.resolve-track {
+    flex: 1 1 auto;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    /* здесь режем вторую панель */
+    border-radius: var(--radius-lg);
+    position: relative;
+    will-change: transform;
     transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.22, 1);
 }
 
-.resolve-switcher .panel {
+/* панели: каждая занимает 100% ширины блока */
+.resolve-track .panel {
     flex: 0 0 100%;
     height: 100%;
     display: flex;
@@ -676,100 +709,69 @@ p.lead {
     color: var(--text);
 }
 
-.panel-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.panel-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--glass);
-    color: var(--accent);
-    font-size: 1.5rem;
-}
-
 .panel-inner h3 {
-    margin: 0;
     font-size: 2rem;
+    margin-bottom: 0.75rem;
 }
 
 .panel-inner p.lead {
-    margin-bottom: 1.5rem;
-}
-
-.problem-list {
-    list-style: none;
-}
-
-.problem-list li {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
     margin-bottom: 1rem;
-    padding: 0.5rem 0;
 }
 
-.problem-list li i {
-    color: var(--error);
+/* Состояние: видна ПРОБЛЕМА, решение полностью справа за пределами трека */
+.resolve-switcher[data-state="problem"] .resolve-track {
+    transform: translateX(0);
+    /* видна первая панель */
 }
 
-.solution-list {
-    list-style: none;
-    counter-reset: solution-counter;
+/* Состояние: видно РЕШЕНИЕ, проблема полностью ушла влево */
+.resolve-switcher[data-state="solution"] .resolve-track {
+    transform: translateX(-100%);
+    /* видна вторая панель */
 }
 
-.solution-list li {
-    counter-increment: solution-counter;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: var(--glass);
+/* Кнопка-переключатель, наполовину снаружи */
+.resolve-control {
+    position: absolute;
+    right: -18px;
+    /* торчит наружу */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.resolve-toggle {
+    padding: 0.9rem 1.3rem;
     border-radius: var(--radius);
-    transition: all 0.3s ease;
-}
-
-.solution-list li:hover {
-    background: var(--glass-light);
-    transform: translateX(10px);
-}
-
-.step-number {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
     background: var(--accent-gradient);
     color: white;
-    font-weight: bold;
+    box-shadow: var(--shadow);
+    transition: all 0.25s ease;
+    white-space: nowrap;
 }
 
-.solution-action {
-    margin-top: 2rem;
+.resolve-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
 }
 
+/* большая кнопка "Подробнее" в панели решения */
 .big-action-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     background: var(--accent-gradient);
     color: white;
-    padding: 1rem 2rem;
+    padding: 0.9rem 1.7rem;
     border-radius: var(--radius);
     font-weight: 600;
     cursor: pointer;
     border: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
@@ -779,28 +781,47 @@ p.lead {
     box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
 }
 
+/* mobile-адаптация */
+@media (max-width: 880px) {
+    .resolve-switcher {
+        width: 100%;
+        height: auto;
+        min-height: 420px;
+        border-radius: 0;
+    }
+
+    .resolve-track .panel {
+        padding: 2rem 1.5rem;
+    }
+
+    .resolve-control {
+        right: 50%;
+        transform: translate(50%, 0);
+        top: auto;
+        bottom: 1.5rem;
+    }
+}
+
+/* кнопка-таб */
 .resolve-control {
     position: absolute;
-    right: 2rem;
+    right: 0;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(50%, -50%);
     z-index: 10;
 }
 
 .resolve-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
+    padding: 0.9rem 1.3rem;
     border-radius: var(--radius);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     border: none;
     cursor: pointer;
     background: var(--accent-gradient);
     color: white;
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 }
 
 .resolve-toggle:hover {
@@ -808,281 +829,50 @@ p.lead {
     box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
 }
 
-.resolve-switcher[data-state="problem"] {
-    transform: translateX(0);
-}
-
-.resolve-switcher[data-state="solution"] {
-    transform: translateX(-100%);
-}
-
-@media (max-width: 880px) {
-    .resolve-switcher {
-        flex-direction: column;
-        height: auto;
-        min-height: 520px;
-    }
-
-    .resolve-switcher .panel {
-        flex: 0 0 100%;
-        padding: 2rem;
-    }
-
-    .resolve-switcher[data-state="problem"] {
-        transform: translateY(0);
-    }
-
-    .resolve-switcher[data-state="solution"] {
-        transform: translateY(-100%);
-    }
-
-    .resolve-control {
-        right: 50%;
-        transform: translateX(50%);
-        top: auto;
-        bottom: 2rem;
-    }
-}
-
-/* PROJECT section */
-.project-visual {
-    position: relative;
-    width: 50%;
-}
-
-.project-preview {
-    width: 100%;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.browser-mockup {
-    background: var(--card);
-    border-radius: var(--radius);
-    overflow: hidden;
-}
-
-.browser-header {
-    background: var(--bg-light);
-    padding: 1rem;
-    display: flex;
+/* большая кнопка в решении */
+.big-action-btn {
+    display: inline-flex;
     align-items: center;
-}
-
-.browser-dots {
-    display: flex;
     gap: 0.5rem;
-}
-
-.browser-dots span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.browser-dots span:nth-child(1) {
-    background: var(--error);
-}
-
-.browser-dots span:nth-child(2) {
-    background: var(--warning);
-}
-
-.browser-dots span:nth-child(3) {
-    background: var(--success);
-}
-
-.browser-content {
-    padding: 1.5rem;
-    background: white;
-    min-height: 300px;
-}
-
-.app-interface {
-    display: flex;
-    height: 100%;
-}
-
-.app-sidebar {
-    width: 60px;
-    background: var(--bg-light);
-    border-radius: var(--radius);
-    padding: 1rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.sidebar-item {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    transition: all 0.3s ease;
-}
-
-.sidebar-item.active,
-.sidebar-item:hover {
-    background: var(--accent);
+    background: var(--accent-gradient);
     color: white;
-}
-
-.app-main {
-    flex: 1;
-    padding: 0 1.5rem;
-}
-
-.app-header {
-    font-size: 1.2rem;
+    padding: 0.9rem 1.7rem;
+    border-radius: var(--radius);
     font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: var(--bg);
-}
-
-.app-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.task-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem;
-    border-radius: var(--radius);
-    background: #f5f7fa;
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
 
-.task-item.active {
-    background: #e3f2fd;
-    border-left: 4px solid var(--accent);
+.big-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
 }
 
-.task-checkbox {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-.task-item.active .task-checkbox {
-    background: var(--accent);
-    border-color: var(--accent);
-}
-
-.task-text {
-    color: var(--bg);
-    font-weight: 500;
-}
-
-.floating-shapes {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.shape {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--glass);
-    animation: float 8s ease-in-out infinite;
-}
-
-.shape-1 {
-    width: 80px;
-    height: 80px;
-    top: -20px;
-    right: -20px;
-    animation-delay: 0s;
-}
-
-.shape-2 {
-    width: 120px;
-    height: 120px;
-    bottom: -40px;
-    left: -40px;
-    animation-delay: 2s;
-}
-
-.shape-3 {
-    width: 60px;
-    height: 60px;
-    top: 50%;
-    right: 10%;
-    animation-delay: 4s;
-}
-
-.project-meta {
-    flex: 1;
-    padding-left: 3rem;
-}
-
-.project-detail {
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-}
-
-.project-stats {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
-}
-
-/* TECH section */
-.tech-content {
-    width: 100%;
-}
-
+/* FINANCE / PROJECT / TESTIMONIALS / TECH — общие карточки */
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
-    margin: 3rem 0;
 }
 
 .tech-card {
     background: var(--card);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: var(--radius);
-    border: 1px solid rgba(51, 153, 255, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    border: 1px solid rgba(51, 153, 255, 0.12);
+    color: var(--text-muted);
+    font-size: 0.95rem;
     transition: all 0.3s ease;
+}
+
+.tech-card strong {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--text);
 }
 
 .tech-card:hover {
@@ -1091,46 +881,26 @@ p.lead {
     border-color: rgba(51, 153, 255, 0.3);
 }
 
-.tech-icon {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+/* PROJECT */
+.project-preview {
+    width: 420px;
+    min-height: 280px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, rgba(19, 47, 76, 0.4), rgba(10, 25, 41, 0.9));
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--glass);
-    color: var(--accent);
-    font-size: 2rem;
-    flex-shrink: 0;
+    color: var(--muted);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(51, 153, 255, 0.2);
+    text-align: center;
+    padding: 1.5rem;
 }
 
-.tech-info strong {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-}
-
-.tech-desc {
+.project-meta {
+    flex: 1;
+    padding-left: 3rem;
     color: var(--text-muted);
-}
-
-.tech-footer {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(51, 153, 255, 0.1);
-}
-
-.footer-logo {
-    width: 100px;
-}
-
-.tech-tagline {
-    color: var(--text-muted);
-    font-style: italic;
 }
 
 /* Modals */
@@ -1147,13 +917,14 @@ p.lead {
 .modal[aria-hidden="false"] {
     display: flex;
     pointer-events: auto;
-    animation: modalFadeIn 0.3s ease;
+    animation: modalFadeIn 0.25s ease;
 }
 
 @keyframes modalFadeIn {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -1174,18 +945,19 @@ p.lead {
     overflow: auto;
     background: var(--card);
     border-radius: var(--radius-lg);
-    padding: 2.5rem;
+    padding: 2.2rem;
     box-shadow: var(--shadow);
     color: var(--text);
     z-index: 2;
-    animation: modalSlideIn 0.4s cubic-bezier(0.22, 0.9, 0.3, 1);
+    animation: modalSlideIn 0.35s cubic-bezier(0.22, 0.9, 0.3, 1);
 }
 
 @keyframes modalSlideIn {
     0% {
         opacity: 0;
-        transform: scale(0.9) translateY(20px);
+        transform: scale(0.97) translateY(10px);
     }
+
     100% {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -1195,7 +967,7 @@ p.lead {
 .modal-close {
     position: absolute;
     top: 1rem;
-    right: 1.5rem;
+    right: 1.4rem;
     background: transparent;
     border: none;
     font-size: 2rem;
@@ -1211,135 +983,13 @@ p.lead {
 .modal-panel h3 {
     margin-top: 0;
     color: var(--accent);
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
-.modal-content {
-    margin-top: 1.5rem;
-}
-
-.modal-section {
-    margin-bottom: 2rem;
-}
-
-.modal-section h4 {
-    color: var(--text);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.modal-section p {
+.modal-panel p,
+.modal-panel li {
     color: var(--text-muted);
     line-height: 1.6;
-}
-
-.architecture-diagram {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-    flex-wrap: wrap;
-}
-
-.arch-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.arch-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--glass);
-    color: var(--accent);
-    font-size: 1.5rem;
-}
-
-.arch-text {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.arch-arrow {
-    color: var(--accent);
-}
-
-.implementation-steps {
-    list-style: none;
-}
-
-.implementation-steps li {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    background: var(--glass);
-    border-radius: var(--radius);
-    transition: all 0.3s ease;
-}
-
-.implementation-steps li:hover {
-    background: var(--glass-light);
-    transform: translateX(10px);
-}
-
-.step-marker {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent-gradient);
-    color: white;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-
-.step-content {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.step-content strong {
-    color: var(--text);
-}
-
-.step-content span {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.contact-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: var(--glass);
-    border-radius: var(--radius);
-    color: var(--text);
-    transition: all 0.3s ease;
-}
-
-.contact-link:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateY(-3px);
 }
 
 /* Responsive design */
@@ -1347,10 +997,10 @@ p.lead {
     .section-inner {
         flex-direction: column;
         align-items: center;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 
-    .project-visual {
+    .project-preview {
         width: 100%;
     }
 
@@ -1370,7 +1020,7 @@ p.lead {
     .hero-top-half,
     .hero-bottom-half {
         min-height: auto;
-        padding-bottom: 2rem;
+        padding-bottom: 1.5rem;
     }
 
     .small-cards {
@@ -1384,35 +1034,47 @@ p.lead {
     .panel-inner {
         max-width: 100%;
     }
+}
 
-    .tech-footer {
+@media (max-width: 880px) {
+    .resolve-switcher {
         flex-direction: column;
-        text-align: center;
+        height: auto;
+        min-height: 480px;
+    }
+
+    .resolve-switcher .panel {
+        flex: 0 0 100%;
+        padding: 2rem;
+    }
+
+    .resolve-switcher[data-state="problem"] {
+        transform: translateY(0);
+    }
+
+    .resolve-switcher[data-state="solution"] {
+        transform: translateY(-100%);
+    }
+
+    .resolve-control {
+        right: 50%;
+        transform: translate(50%, 0);
+        top: auto;
+        bottom: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
     .snap-section {
-        padding: 60px 20px;
+        padding: 70px 20px;
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
 
     h2 {
         font-size: 2rem;
-    }
-
-    .top-nav {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
     }
 
     .cta-row {
@@ -1423,21 +1085,7 @@ p.lead {
         justify-content: center;
     }
 
-    .resolve-switcher .panel {
-        padding: 1.5rem;
-    }
-
-    .architecture-diagram {
-        flex-direction: column;
-    }
-
-    .arch-arrow {
-        transform: rotate(90deg);
-    }
-
-    .step-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+    .section-inner {
+        gap: 2rem;
     }
 }
