@@ -57,18 +57,22 @@ body {
     height: 680px;
     border-radius: 50%;
     background: transparent;
-    border: 5px solid white;
-    /* box-shadow: 0 0 50px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5) inset; */
+    border: 20px solid white;
+
+    /* ОПТИМИЗИРОВАННЫЙ box-shadow: включает ВНЕШНЕЕ и ВНУТРЕННЕЕ свечение */
     box-shadow:
+        /* Внешнее свечение */
         0 0 40px rgba(255, 255, 255, 0.8),
         0 0 80px rgba(255, 255, 255, 0.4),
-        inset 0 0 40px rgba(255, 255, 255, 0.15);
+        /* УСИЛЕННОЕ ВНУТРЕННЕЕ СВЕЧЕНИЕ (inset) - несколько слоев */
+        inset 0 0 60px rgba(255, 255, 255, 0.4),
+        inset 0 0 100px rgba(255, 255, 255, 0.2),
+        inset 0 0 140px rgba(255, 255, 255, 0.1);
+
     animation: pulse 3s ease-in-out infinite;
     opacity: 0;
     transform: scale(0.1);
-    /* Исходная позиция */
     transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    /* "Выпрыгивающий" эффект */
 }
 
 @keyframes pulse {
@@ -76,16 +80,24 @@ body {
     0%,
     100% {
         box-shadow:
+            /* Внешнее */
             0 0 40px rgba(255, 255, 255, 0.8),
             0 0 80px rgba(255, 255, 255, 0.4),
-            inset 0 0 40px rgba(255, 255, 255, 0.15);
+            /* Внутреннее (базовое состояние) */
+            inset 0 0 60px rgba(255, 255, 255, 0.4),
+            inset 0 0 100px rgba(255, 255, 255, 0.2),
+            inset 0 0 140px rgba(255, 255, 255, 0.1);
     }
 
     50% {
         box-shadow:
+            /* Внешнее (пульсация) */
             0 0 60px rgba(255, 255, 255, 1),
             0 0 100px rgba(255, 255, 255, 0.5),
-            inset 0 0 40px rgba(255, 255, 255, 0.2);
+            /* Внутреннее (усиленное при пульсации) */
+            inset 0 0 80px rgba(255, 255, 255, 0.6),
+            inset 0 0 120px rgba(255, 255, 255, 0.3),
+            inset 0 0 160px rgba(255, 255, 255, 0.15);
     }
 }
 
@@ -152,7 +164,7 @@ body {
 
 .team-member-card.animate .role-right {
     opacity: 1;
-    transform: translateX(600px);
+    transform: translateX(580px);
 }
 
 /* --- 5. Имя, Фамилия, Отчество --- */
