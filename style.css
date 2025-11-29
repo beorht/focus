@@ -3,14 +3,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 185vh;
     margin: 0;
-    background-color: #1c1c1c;
-    /* Черный фон для контраста */
+    background-color: #1d1d1d;
     font-family: monospace;
-    /* Стиль, похожий на скриншот */
     overflow: hidden;
+    transition: background-color 1.2s ease;
+    /* добавить */
 }
+
 
 /* --- Основной контейнер --- */
 .team-member-card {
@@ -22,6 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: opacity 0.6s ease;
 }
 
 /* --- 1. Team Lead (Сверху вниз) --- */
@@ -116,7 +118,7 @@ body {
     opacity: 0;
     /* Исходная позиция: Снизу и СЛЕВА */
     /* Устанавливаем начальное горизонтальное смещение, чтобы начать из левой позиции */
-    transform: translate(-100px, 250px);
+    transform: translate(-100px, 500px);
     /* -100px сдвигает начало левее */
     transition: all 0.8s ease-out 0.5s;
 }
@@ -241,4 +243,69 @@ body {
     opacity: 1;
     transform: translate(0, -50%);
     /* Конечная позиция */
+}
+
+/* Плавная смена карточки между участниками */
+.team-member-card {
+    transition: opacity 0.6s ease;
+}
+
+.team-member-card.fading {
+    opacity: 0;
+}
+
+/* Кнопки навигации (стрелки) */
+/* Контейнер стрелок */
+.nav-controls {
+    position: absolute;
+    margin-bottom: 190px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* чтобы не мешать hover */
+}
+
+/* Кнопки-стрелки */
+.nav-btn {
+    pointer-events: auto;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    background: transparent;
+    color: white;
+    font-size: 28px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Hover эффект — делаем красиво */
+.nav-btn:hover {
+    border-color: white;
+    color: white;
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.5),
+        0 0 32px rgba(255, 255, 255, 0.2);
+}
+
+/* Нажатие */
+.nav-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
