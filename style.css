@@ -3,7 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 185vh;
+    min-height: 140vh;
     margin: 0;
     background-color: #1d1d1d;
     font-family: monospace;
