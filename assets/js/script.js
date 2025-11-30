@@ -1,5 +1,23 @@
 // ===== SCRIPT.JS =====
 
+// ===== NAVBAR TOGGLE (mobile) =====
+const navToggle = document.getElementById('navToggle');
+const nav = document.querySelector('.nav');
+
+if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav--open');
+    });
+
+    // закрывать меню при клике по ссылке
+    document.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('nav--open');
+        });
+    });
+}
+
+
 // Problem-Solution Toggle
 const toggleBtn = document.getElementById('toggleBtn');
 const problemPanel = document.getElementById('problemPanel');
@@ -102,35 +120,40 @@ const teamMembers = [
         rolePrimary: 'Backend',
         roleSecondary: 'Developer',
         skills: ['Python', 'C++', 'JavaScript', 'Node.js', 'С#', '.Net', '.ASP', 'PostgreSQL', 'MS SQL', 'Server'],
-        image: 'assets/images/team/behruz.png'
+        image: 'assets/images/team/behruz.png',
+        github: 'https://beorht.github.io/my_portfolio/' // замени на реальный
     },
     {
         name: 'Нормирзаев Билолиддин Анвар угли',
         rolePrimary: 'Fronted',
         roleSecondary: 'Developer',
         skills: ['Python', 'JavaScript', 'HTML/CSS', 'PostgreSQL', 'Node.js'],
-        image: 'assets/images/team/billy.png'
+        image: 'assets/images/team/billy.png',
+        github: 'https://github.com/B1l0l1dd1n' // замени на реальный
     },
     {
         name: 'Мирмахмудов Фаррух Боходир угли',
         rolePrimary: 'UI/UX',
         roleSecondary: 'Designer',
         skills: ['UI/UX Design', 'Python', 'HTML/CSS', 'JavaScript', 'Graphic Design', 'SQL', 'Linux Administration'],
-        image: 'assets/images/team/farruh.png'
+        image: 'assets/images/team/farruh.png',
+        github: 'https://github.com/exfiltrix' // замени на реальный
     },
     {
         name: 'Сайдазимов Эмир-Саид Русланович',
         rolePrimary: 'Project',
         roleSecondary: 'Manager',
         skills: ['3D-моделирование', 'e-commerce (Shopify)', 'Python', 'HTML/CSS', 'JavaScript', 'React', 'Angular', 'PostgreSQl', 'MySql', 'Node.js'],
-        image: 'assets/images/team/emir.png'
+        image: 'assets/images/team/emir.png',
+        github: 'https://github.com/DAKARCHIK' // замени на реальный
     },
     {
         name: 'Иброхимов Акмалхон Мирзохидович',
         rolePrimary: 'System',
         roleSecondary: 'Architect',
         skills: ['Android (Kotlin, Java)', 'Jetpack Compose', 'MVVM', 'Clean Architecture', 'Hilt (DI)', 'Retrofit', 'Room', 'Paging3', 'Flow', 'LiveData', 'Coroutine', 'Firebase', 'Git', 'Python', 'SQL'],
-        image: 'assets/images/team/akmal.png'
+        image: 'assets/images/team/akmal.png',
+        github: 'https://github.com/AkmalkhonIbrokhimov' // замени на реальный
     }
 ];
 
@@ -153,22 +176,27 @@ if (teamCardsContainer && dotsContainer) {
         if (index === 0) slide.classList.add('team__slide--active');
 
         slide.innerHTML = `
-            <div class="team__ring"></div>
-            <div class="team__photo-circle">
-                ${member.image
+    <div class="team__ring"></div>
+    <div class="team__photo-circle">
+        ${member.image
                 ? `<img src="${member.image}" alt="${member.name}" class="team__photo-img">`
-                : `<span class="team__photo-initials">${member.initials}</span>`
+                : `<span class="team__photo-initials">${member.initials || ''}</span>`
             }
-            </div>
-            <div class="team__role">
-                <span class="team__role-word team__role-word--primary">${member.rolePrimary}</span>
-                <span class="team__role-word team__role-word--secondary">${member.roleSecondary}</span>
-            </div>
-            <div class="team__name">${member.name}</div>
-            <div class="team__skills-list">
-                ${member.skills.map(skill => `<span class="team__skill">${skill}</span>`).join('')}
-            </div>
-        `;
+    </div>
+    <div class="team__role">
+        <span class="team__role-word team__role-word--primary">${member.rolePrimary}</span>
+        <span class="team__role-word team__role-word--secondary">${member.roleSecondary}</span>
+    </div>
+    <div class="team__name">${member.name}</div>
+    <div class="team__skills-list">
+        ${member.skills.map(skill => `<span class="team__skill">${skill}</span>`).join('')}
+    </div>
+    ${member.github ? `
+        <a href="${member.github}" target="_blank" rel="noopener noreferrer" class="team__portfolio-btn">
+            Portfolio →
+        </a>
+    ` : ''}
+`;
 
         teamCardsContainer.appendChild(slide);
     });
@@ -336,3 +364,4 @@ document.querySelectorAll('.tech__badge').forEach(badge => {
 });
 
 console.log('Fullscreen presentation website loaded successfully with animated team block and auto-rotation.');
+

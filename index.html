@@ -12,6 +12,29 @@
 </head>
 
 <body>
+    <header class="nav">
+        <div class="nav__inner">
+            <a href="#hero" class="nav__logo">
+                F.O.C.U.S<span class="nav__logo-accent">AI</span>
+            </a>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav__links">
+                <a href="#problem-solution" class="nav__link">Проблема</a>
+                <a href="#why-us" class="nav__link">Почему мы</a>
+                <a href="#roadmap" class="nav__link">Roadmap</a>
+                <a href="#pricing" class="nav__link">Тарифы</a>
+                <a href="#expenses" class="nav__link">Расходы</a>
+                <a href="#demo" class="nav__link">Demo / MVP</a>
+                <a href="#team" class="nav__link">Команда</a>
+                <a href="#tech" class="nav__link">Tech</a>
+            </nav>
+        </div>
+    </header>
     <main class="scroll-container">
         <!-- Hero Section -->
         <section id="hero" class="hero section-fullscreen">
@@ -41,12 +64,16 @@
                             <div class="card">
                                 <h3 class="card__title">Проблема</h3>
                                 <div class="card__content">
-                                    <p>В Узбекистане миллионы молодых людей (школьники 13–18, студенты 17–24, молодые
-                                        специалисты 18–30) сталкиваются с отсутствием персонализированной
-                                        профориентации: они не знают, какие профессии им подходят, какие навыки
-                                        развивать и как спланировать карьеру от Junior до Senior.</p>
-                                    <p>Это ведёт к ошибочным образовательным решениям, потере времени и ресурсов,
-                                        слабому карьерному росту и разрыву между образованием и потребностями рынка.</p>
+                                    <p>В Узбекистане миллионы молодых людей — школьники 13–18 лет, студенты 17–24 лет и
+                                        начинающие специалисты 18–30 лет — остаются без качественной персонализированной
+                                        профориентации.
+                                        Они не понимают, какие профессии им подходят, какие навыки развивать и как
+                                        выстроить карьерный путь от новичка до профессионала.</p>
+                                    <p>В результате они часто делают неверный выбор в образовании, теряют время и
+                                        ресурсы, сталкиваются с замедленным карьерным развитием и усиливающимся разрывом
+                                        между получаемыми знаниями и требованиями рынка. <a
+                                            href="https://drive.google.com/file/d/1JJ7wgXqxQr5S7RBbYMcV3Fn4aKiLEnzG/view?usp=sharing"
+                                            class="ref-card" target="_blank">Доп. Материал</a></p>
                                 </div>
                             </div>
                         </div>
@@ -61,8 +88,9 @@
 
                                     <p>Психометрический анализ, умные рекомендации и данные рынка труда ведут
                                         пользователя от новичка до специалиста,
-                                        уменьшают неопределённость, улучшая результаты и ускоряя трудоустройство.</p>
-
+                                        уменьшают неопределённость, улучшая результаты и ускоряя трудоустройство. <a
+                                            href="https://drive.google.com/file/d/1wo91vEgQ5nokNG_SUa1TMgapGjB-c0rc/view?usp=sharing"
+                                            class="ref-card" target="_blank">Доп. Материал</a></p>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +153,8 @@
                         <div class="roadmap__number">03</div>
                         <div class="roadmap__content">
                             <h3>MVP</h3>
-                            <p>регистрация, психометрический тест, базовый профиль, подбор профессий.</p>
+                            <p>регистрация, пользовательского соглашения для обработки личных
+                                данных, психометрический тест, подбор профессий.</p>
                         </div>
                     </div>
                     <div class="roadmap__step" data-step="4">
@@ -141,7 +170,7 @@
                         <div class="roadmap__content">
                             <h3>AI Integration</h3>
                             <p>embeddings, персональные рекомендации, генерация roadmap,
-                                стабилизация ИИ-поведения и улучшение качества прогнозов.</p>
+                                улучшение качества прогнозов.</p>
                         </div>
                     </div>
                     <div class="roadmap__step" data-step="4">
@@ -172,7 +201,7 @@
         <!-- Pricing Section -->
         <section id="pricing" class="pricing section-fullscreen">
             <div class="pricing__container">
-                <h2 class="section-title">Финансы | Подписки</h2>
+                <h2 class="section-title">Финансы & Подписки</h2>
                 <div class="pricing__grid">
                     <div class="pricing__card">
                         <h3 class="pricing__plan">Пробная версия</h3>
@@ -180,6 +209,7 @@
                         <ul class="pricing__features">
                             <li>Базовый тест</li>
                             <li>Рекомендованные профессии (3)</li>
+                            <li>Персональный путь</li>
                         </ul>
                     </div>
                     <div class="pricing__card">
@@ -188,7 +218,7 @@
                         <ul class="pricing__features">
                             <li>Базовый тест</li>
                             <li>Полный тест</li>
-                            <li>Рекомендованные профессии</li>
+                            <li>Рекомендованные профессии (25)</li>
                             <li>Персональный путь</li>
                             <li>Анализ рынка Узбекистана</li>
                             <li>PDF-отчёты</li>
@@ -209,7 +239,7 @@
                         </ul>
                     </div>
                     <div class="pricing__card">
-                        <h3 class="pricing__plan">Годовая подписка</h3>
+                        <h3 class="pricing__plan">12 месяцев</h3>
                         <div class="pricing__price">200 тыс. сум</div>
                         <ul class="pricing__features">
                             <li>Базовый тест</li>
@@ -235,8 +265,6 @@
                             <h3>Итоговые месячные расходы MVP</h3>
                             <p>Примерные сроки разработки обучения ИИ и подготовка базового MVP продукта F.O.C.U.S. AI
                                 расчитывается на 2.5 месяца</p>
-                            <p>Основные категории затрат на запуск и поддержку MVP-версии платформы F.O.C.U.S AI на
-                                ежемесячной основе.</p>
                         </div>
 
                         <div class="expenses__table-wrapper">
@@ -297,24 +325,16 @@
         <section id="demo" class="demo section-fullscreen">
             <div class="demo__container">
                 <h2 class="section-title">Demo / MVP</h2>
-                <p class="demo__description">Watch how our platform transforms complex workflows into simple, automated
-                    processes. See real results in under 2 minutes.</p>
-                <div class="demo__video-wrapper">
-                    <div class="demo__video">
-                        <div class="demo__play-button" id="playButton">
-                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                <circle cx="40" cy="40" r="40" fill="rgba(102, 126, 234, 0.9)" />
-                                <path d="M32 25L55 40L32 55V25Z" fill="white" />
-                            </svg>
-                        </div>
-                        <video id="demoVideo" controls poster="">
-                            <source src="demo-video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+
+                <div class="demo__image-wrapper">
+                    <div class="demo__image">
+                        <img src="assets/images/demo.png" alt="Demo preview" />
                     </div>
                 </div>
+
             </div>
         </section>
+
 
         <!-- Team Section -->
         <section id="team" class="team section-fullscreen">
@@ -335,61 +355,103 @@
         <!-- Tech Stack Section -->
         <section id="tech" class="tech section-fullscreen">
             <div class="tech__container">
-                <h2 class="section-title">Tech Stack</h2>
-                <div class="tech__grid">
-                    <div class="tech__category">
-                        <h3 class="tech__category-title">Frontend</h3>
-                        <div class="tech__items">
-                            <span class="tech__badge">React</span>
-                            <span class="tech__badge">Vue.js</span>
-                            <span class="tech__badge">TypeScript</span>
-                            <span class="tech__badge">Tailwind CSS</span>
-                            <span class="tech__badge">Redux</span>
+                <h2 class="section-title">AI / Технологический стек</h2>
+
+                <div class="tech__grid tech__grid--ai">
+
+                    <!-- 1. Embeddings -->
+                    <article class="tech__category">
+                        <h3 class="tech__category-title">Embeddings / Семантическая векторизация</h3>
+                        <p class="tech__desc">
+                            F.O.C.U.S AI преобразует данные пользователя, навыки, профессии и обучающие материалы в
+                            семантические векторы, чтобы понимать смысл и строить точные рекомендации.
+                        </p>
+
+                        <div class="tech__block">
+                            <h4 class="tech__subheading">Используемые модели</h4>
+                            <div class="tech__chips">
+                                <span class="tech__chip">OpenAI Embeddings</span>
+                                <span class="tech__chip">SBERT (Sentence-BERT)</span>
+                                <span class="tech__chip">Llama 3 / Mistral Embed</span>
+                                <span class="tech__chip">Instructor-XL</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tech__category">
-                        <h3 class="tech__category-title">Backend</h3>
-                        <div class="tech__items">
-                            <span class="tech__badge">Node.js</span>
-                            <span class="tech__badge">Python</span>
-                            <span class="tech__badge">Django</span>
-                            <span class="tech__badge">Express</span>
-                            <span class="tech__badge">GraphQL</span>
+
+                        <div class="tech__block">
+                            <h4 class="tech__subheading">Технологии</h4>
+                            <div class="tech__chips">
+                                <span class="tech__chip">PostgreSQL</span>
+                                <span class="tech__chip">PGVector</span>
+                                <span class="tech__chip">Семантический поиск</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tech__category">
-                        <h3 class="tech__category-title">Infrastructure</h3>
-                        <div class="tech__items">
-                            <span class="tech__badge">AWS</span>
-                            <span class="tech__badge">Docker</span>
-                            <span class="tech__badge">Kubernetes</span>
-                            <span class="tech__badge">PostgreSQL</span>
-                            <span class="tech__badge">Redis</span>
+                    </article>
+
+                    <!-- 2. RAG -->
+                    <article class="tech__category">
+                        <h3 class="tech__category-title">RAG — интеллектуальный поиск знаний</h3>
+                        <p class="tech__desc">
+                            RAG (Retrieval-Augmented Generation) позволяет ИИ использовать реальные данные: профессии,
+                            результаты тестов, материалы обучения и аналитику рынка труда, формируя максимально точные
+                            ответы.
+                        </p>
+
+                        <div class="tech__block">
+                            <h4 class="tech__subheading">Работа с данными</h4>
+                            <div class="tech__chips">
+                                <span class="tech__chip">Профессии</span>
+                                <span class="tech__chip">Результаты тестов</span>
+                                <span class="tech__chip">Учебные материалы</span>
+                                <span class="tech__chip">Статистика рынка труда</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tech__category">
-                        <h3 class="tech__category-title">AI/ML</h3>
-                        <div class="tech__items">
-                            <span class="tech__badge">TensorFlow</span>
-                            <span class="tech__badge">PyTorch</span>
-                            <span class="tech__badge">OpenAI API</span>
-                            <span class="tech__badge">Scikit-learn</span>
-                            <span class="tech__badge">Hugging Face</span>
+
+                        <div class="tech__block">
+                            <h4 class="tech__subheading">Технологии</h4>
+                            <div class="tech__chips">
+                                <span class="tech__chip">PGVector</span>
+                                <span class="tech__chip">ChromaDB</span>
+                                <span class="tech__chip">Pinecone</span>
+                                <span class="tech__chip">LangChain</span>
+                                <span class="tech__chip">LlamaIndex</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tech__category">
-                        <h3 class="tech__category-title">Tools</h3>
-                        <div class="tech__items">
-                            <span class="tech__badge">Git</span>
-                            <span class="tech__badge">GitHub Actions</span>
-                            <span class="tech__badge">Figma</span>
-                            <span class="tech__badge">Jira</span>
-                            <span class="tech__badge">Postman</span>
+                    </article>
+
+                    <!-- 3. Fine-tuning -->
+                    <article class="tech__category">
+                        <h3 class="tech__category-title">Дообучение модели (Fine-tuning)</h3>
+                        <p class="tech__desc">
+                            Чтобы F.O.C.U.S AI работал как персональный карьерный эксперт, модель адаптируется под рынок
+                            Узбекистана, психотипы пользователей, карьерные маршруты и терминологию платформы.
+                        </p>
+
+                        <div class="tech__block">
+                            <h4 class="tech__subheading">Что дообучаем</h4>
+                            <div class="tech__chips">
+                                <span class="tech__chip">Рынок труда Узбекистана</span>
+                                <span class="tech__chip">Психотипы пользователей</span>
+                                <span class="tech__chip">Карьерные дорожные карты</span>
+                                <span class="tech__chip">Терминология платформы</span>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="tech__block">
+                            <h4 class="tech__subheading">Технологии</h4>
+                            <div class="tech__chips">
+                                <span class="tech__chip">LoRA</span>
+                                <span class="tech__chip">QLoRA</span>
+                                <span class="tech__chip">HuggingFace Trainer</span>
+                                <span class="tech__chip">DeepSpeed</span>
+                                <span class="tech__chip">ColossalAI</span>
+                            </div>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
+
     </main>
 
     <script src="assets/js/script.js" defer></script>
