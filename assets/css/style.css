@@ -8,7 +8,7 @@
 }
 
 :root {
-    --primary-color: #667eea;
+    --primary-color: #62a077;
     --secondary-color: #764ba2;
     --accent-color: #f093fb;
     --text-dark: #1a202c;
@@ -16,7 +16,7 @@
     --bg-dark: #1d1d1d;
     --card-bg: #2a2a2a;
     --white: #ffffff;
-    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-1: #8eb69b;
     --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -72,36 +72,43 @@ body {
 }
 
 .hero__container {
-    max-width: 800px;
+    max-width: 1200px;
+    width: 100%;
     text-align: center;
     position: relative;
     z-index: 1;
     animation: fadeInUp 1s ease;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
+/* Лого ~60% высоты вьюпорта */
 .hero__logo {
-    width: 1200px;
-    height: auto;
-    margin: 0 auto 2rem;
     display: block;
-    /* border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.1); */
+    max-height: 60vh;
+    max-width: 90vw;
+    height: auto;
+    margin: 0 auto;
 }
 
 .hero__logo:hover {
     opacity: 0.9;
-    transform: scale(1.05);
+    transform: scale(1.03);
     transition: var(--transition);
+}
+
+.hero__text {
+    max-width: 1000px;
 }
 
 .hero__title {
     font-size: 3rem;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     line-height: 1.2;
 }
 
@@ -153,15 +160,16 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* Кнопка переключения Problem/Solution — под контейнером */
 .btn--toggle {
     background: var(--gradient-1);
     color: var(--white);
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+    margin-top: 2rem;
+    display: block;
+    padding-inline: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
 }
 
 /* Section Styles */
@@ -170,7 +178,7 @@ body {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    background: var(--gradient-1);
+    background: var(--text-light);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -259,6 +267,7 @@ body {
 .card__content p {
     margin-bottom: 1rem;
     color: var(--text-light);
+    font-size: 24px;
     line-height: 1.8;
 }
 
@@ -487,9 +496,11 @@ body {
     border-bottom: none;
 }
 
-/* Expenses Section */
+/* ===== EXPENSES (TABLE) ===== */
+
 .expenses {
     background: var(--bg-dark);
+    bottom: 20px;
 }
 
 .expenses__container {
@@ -499,83 +510,147 @@ body {
 }
 
 .expenses__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.expenses__charts {
+.expenses__card {
     background: var(--card-bg);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    margin-top: -20px;
+    padding-top: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
 }
 
-.expenses__chart {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    height: 350px;
-    gap: 0.5rem;
+.expenses__header {
+    margin-bottom: 2rem;
 }
 
-.chart-bar {
-    flex: 1;
-    background: var(--color);
-    border-radius: 8px 8px 0 0;
-    height: var(--height);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 1rem;
-    position: relative;
-    transition: var(--transition);
-}
-
-.chart-bar:hover {
-    opacity: 0.8;
-    transform: translateY(-5px);
-}
-
-.chart-bar__value {
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.chart-bar__label {
-    position: absolute;
-    bottom: -25px;
-    font-size: 0.75rem;
-    color: var(--text-light);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-}
-
-.expenses__info h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--white);
-}
-
-.expenses__item {
-    margin-bottom: 1.5rem;
-}
-
-.expenses__item strong {
-    display: block;
-    color: var(--white);
+.expenses__header h3 {
+    font-size: 1.75rem;
     margin-bottom: 0.5rem;
-    font-size: 1rem;
+    color: var(--white);
 }
 
-.expenses__item p {
+.expenses__header p {
     color: var(--text-light);
-    line-height: 1.6;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+}
+
+/* Обёртка для горизонтального скролла, если экран узкий */
+.expenses__table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Таблица */
+.expenses__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.expenses__table thead tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.expenses__table th,
+.expenses__table td {
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    font-size: 0.95rem;
+    vertical-align: top;
+}
+
+.expenses__table th {
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+}
+
+.expenses__table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.expenses__table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.expenses__table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Колонки */
+.expenses__table td:first-child {
+    color: var(--white);
+    font-weight: 500;
+    width: 24%;
+}
+
+.expenses__table td:nth-child(2) {
+    color: var(--text-light);
+    width: 52%;
+}
+
+.expenses__table td:last-child {
+    text-align: right;
+    white-space: nowrap;
+    color: var(--text-light);
+    width: 24%;
+}
+
+/* Итоговая строка */
+.expenses__row-total td {
+    font-weight: 700;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    padding-top: 1.2rem;
+}
+
+.expenses__row-total td:first-child {
+    color: var(--white);
+}
+
+.expenses__row-total td:last-child {
+    color: var(--accent-color);
+}
+
+/* ==== Адаптив ==== */
+@media (max-width: 968px) {
+    .expenses__card {
+        padding: 2rem 1.5rem;
+    }
+
+    .expenses__header h3 {
+        font-size: 1.4rem;
+    }
+
+    .expenses__table th,
+    .expenses__table td {
+        padding: 0.75rem 0.75rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .expenses__header p {
+        font-size: 0.85rem;
+    }
+
+    .expenses__table td:first-child,
+    .expenses__table td:nth-child(2),
+    .expenses__table td:last-child {
+        width: auto;
+    }
 }
 
 /* Demo Section */
@@ -610,7 +685,7 @@ body {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
-    border: 3px solid var(--primary-color);
+    border: 2px solid var(--text-light);
 }
 
 .demo__play-button {
@@ -652,115 +727,162 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
 }
 
 .team__cards {
     flex: 1;
-    overflow: hidden;
     position: relative;
-    min-height: 500px;
-}
-
-.team__card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 3rem;
-    box-shadow: var(--shadow-md);
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) scale(0.8);
-    opacity: 0;
-    transition: all 0.5s ease;
-    width: 90%;
-    max-width: 500px;
-    pointer-events: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.team__card--active {
-    transform: translateX(-50%) scale(1);
-    opacity: 1;
-    pointer-events: all;
-}
-
-.team__photo {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 1.5rem;
-    border-radius: 50%;
-    background: var(--gradient-1);
+    max-width: 1200px;
+    height: 75vh;
+    min-height: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    /* ничего не вылезает за блок */
+    transform: translateY(-4vh);
+    /* немного выше центра экрана */
 }
 
-.team__initials {
+
+
+/* Слайд участника команды */
+.team__slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    /* без transition — появление слайда мгновенно,
+       плавность берут на себя внутренние анимации */
+}
+
+.team__slide--active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* Белое кольцо с pulse */
+.team__ring {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.35);
+    opacity: 0;
+    transform: scale(0.8);
+    z-index: 1;
+}
+
+/* Фото во весь рост, без круга */
+.team__photo-circle {
+    width: auto;
+    height: 60vh;
+    /* занимать ~60% высоты экрана */
+    max-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* Само изображение — целиком видно по высоте */
+.team__photo-img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    /* не обрезаем ноги/голову */
+    display: block;
+}
+
+/* Fallback — инициалы, если нет фотки */
+.team__photo-initials {
     font-size: 3rem;
     font-weight: 700;
     color: var(--white);
 }
 
-.team__name {
-    font-size: 1.75rem;
-    margin-bottom: 0.5rem;
-    color: var(--white);
-}
-
+/* Роль (два слова) — позади фото, над кольцом */
 .team__role {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    font-size: 1.125rem;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.09);
 }
 
-.team__skills {
+.team__role-word {
+    position: absolute;
+    opacity: 0;
+}
+
+.team__role-word--primary {
+    left: 1%;
+    top: 15%;
+    transform: translateX(-40px);
+    font-size: 7rem;
+}
+
+.team__role-word--secondary {
+    right: 1%;
+    top: 38%;
+    transform: translateX(40px);
+    font-size: 7rem;
+}
+
+/* ФИО */
+.team__name {
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 4;
+}
+
+/* Навыки слева от участника */
+.team__skills-list {
+    position: absolute;
+    left: 1%;
+    bottom: 1%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-bottom: 1.5rem;
+    /* flex-direction: column; */
+    gap: 0.4rem;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateX(-40px);
+    z-index: 4;
 }
 
-.tag {
+.team__skill {
     background: rgba(102, 126, 234, 0.2);
     color: var(--white);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid rgba(102, 126, 234, 0.3);
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(102, 126, 234, 0.5);
 }
 
-.team__tech {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-}
-
-.team__links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.team__link {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.team__link:hover {
-    color: var(--accent-color);
-}
-
+/* Стрелки */
 .team__arrow {
     background: var(--card-bg);
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -773,11 +895,11 @@ body {
 }
 
 .team__arrow:hover {
-    background: var(--primary-color);
-    color: var(--white);
+    background: inherit;
+    color: inherit;
 }
 
-.team__dots {
+/* .team__dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
@@ -792,10 +914,44 @@ body {
     border: 2px solid var(--primary-color);
     cursor: pointer;
     transition: var(--transition);
-}
+} */
 
 .team__dot--active {
     background: var(--primary-color);
+}
+
+/* Активные анимации в слайде — реакция сразу, без пауз */
+.team__slide--active .team__ring {
+    animation: ringPulse 3s ease-in-out infinite;
+    opacity: 1;
+}
+
+/* Фото появляется СРАЗУ, без задержки */
+.team__slide--active .team__photo-circle {
+    animation: slideUpPhoto 0.6s ease-out forwards;
+    animation-delay: 0s;
+}
+
+/* Роль — легкая ступенчатость, но задержки минимальные */
+.team__slide--active .team__role-word--primary {
+    animation: slideInLeft 0.6s ease-out forwards;
+    animation-delay: 0.1s;
+}
+
+.team__slide--active .team__role-word--secondary {
+    animation: slideInRight 0.6s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* Имя и навыки — тоже без больших пауз */
+.team__slide--active .team__name {
+    animation: fadeInUpName 0.6s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.team__slide--active .team__skills-list {
+    animation: slideInLeft 0.6s ease-out forwards;
+    animation-delay: 0.4s;
 }
 
 /* Tech Stack Section */
@@ -872,10 +1028,80 @@ body {
     }
 }
 
+@keyframes ringPulse {
+    0% {
+        opacity: 0.7;
+        transform: scale(0.96);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    75% {
+        opacity: 0.9;
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes slideUpPhoto {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUpName {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
     .hero__title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .hero__subtitle {
@@ -888,10 +1114,6 @@ body {
 
     .expenses__content {
         grid-template-columns: 1fr;
-    }
-
-    .team__arrow {
-        display: none;
     }
 
     .pricing__grid {
@@ -907,10 +1129,19 @@ body {
         padding: 2rem;
     }
 
-    .btn--toggle {
-        position: static;
-        transform: none;
-        margin-top: 2rem;
+    .team__cards {
+        height: 60vh;
+    }
+
+    .team__name {
+        right: 8%;
+        bottom: 22%;
+        font-size: 1.1rem;
+    }
+
+    .team__role-word--primary,
+    .team__role-word--secondary {
+        font-size: 2rem;
     }
 }
 
@@ -921,11 +1152,6 @@ body {
 
     .card {
         padding: 2rem 1.5rem;
-    }
-
-    .hero__logo {
-        width: 100px;
-        height: 100px;
     }
 
     .chart-bar__label {
@@ -945,18 +1171,60 @@ body {
         height: 300px;
     }
 
-    .btn--toggle {
-        position: static;
-        transform: none;
-        margin-top: 2rem;
-    }
-
     .roadmap__timeline {
         grid-template-columns: 1fr;
     }
 
     .tech__grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Упрощённая компоновка team на мобильных */
+    .team__cards {
+        height: auto;
+        min-height: 420px;
+    }
+
+    .team__slide {
+        position: relative;
+    }
+
+    .team__ring {
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%) scale(0.9);
+    }
+
+    .team__photo-circle {
+        margin-top: 4rem;
+    }
+
+    .team__name {
+        position: static;
+        margin-top: 1rem;
+        transform: translateY(0);
+        text-align: center;
+    }
+
+    .team__skills-list {
+        position: static;
+        margin-top: 1rem;
+        align-items: center;
+        transform: translateX(0);
+    }
+
+    .team__role {
+        font-size: 1.4rem;
+    }
+
+    .team__role-word--primary {
+        left: 5%;
+        top: 28%;
+    }
+
+    .team__role-word--secondary {
+        right: 5%;
+        top: 45%;
     }
 }
 

@@ -13,11 +13,11 @@ if (toggleBtn && problemPanel && solutionPanel) {
         if (showingSolution) {
             problemPanel.classList.add('hidden');
             solutionPanel.classList.add('active');
-            toggleBtn.textContent = 'Back to Problem';
+            toggleBtn.textContent = 'Вернуться к Проблем';
         } else {
             problemPanel.classList.remove('hidden');
             solutionPanel.classList.remove('active');
-            toggleBtn.textContent = 'Show Solution';
+            toggleBtn.textContent = 'Показать Решение';
         }
     });
 }
@@ -94,36 +94,109 @@ if (playButton && demoVideo) {
     });
 }
 
-// Team Carousel
-const teamCards = document.querySelectorAll('.team__card');
+/* === TEAM CAROUSEL — ФОТО + АВТОСМЕНА === */
+
+const teamMembers = [
+    {
+        name: 'Мухаммаджонов Бехруз Тохиржон угли',
+        rolePrimary: 'Backend',
+        roleSecondary: 'Developer',
+        skills: ['Python', 'C++', 'JavaScript', 'Node.js', 'С#', '.Net', '.ASP', 'PostgreSQL', 'MS SQL', 'Server'],
+        image: 'assets/images/team/behruz.png'
+    },
+    {
+        name: 'Нормирзаев Билолиддин Анвар угли',
+        rolePrimary: 'Fronted',
+        roleSecondary: 'Developer',
+        skills: ['Python', 'JavaScript', 'HTML/CSS', 'PostgreSQL', 'Node.js'],
+        image: 'assets/images/team/billy.png'
+    },
+    {
+        name: 'Мирмахмудов Фаррух Боходир угли',
+        rolePrimary: 'UI/UX',
+        roleSecondary: 'Designer',
+        skills: ['UI/UX Design', 'Python', 'HTML/CSS', 'JavaScript', 'Graphic Design', 'SQL', 'Linux Administration'],
+        image: 'assets/images/team/farruh.png'
+    },
+    {
+        name: 'Сайдазимов Эмир-Саид Русланович',
+        rolePrimary: 'Project',
+        roleSecondary: 'Manager',
+        skills: ['3D-моделирование', 'e-commerce (Shopify)', 'Python', 'HTML/CSS', 'JavaScript', 'React', 'Angular', 'PostgreSQl', 'MySql', 'Node.js'],
+        image: 'assets/images/team/emir.png'
+    },
+    {
+        name: 'Иброхимов Акмалхон Мирзохидович',
+        rolePrimary: 'System',
+        roleSecondary: 'Architect',
+        skills: ['Android (Kotlin, Java)', 'Jetpack Compose', 'MVVM', 'Clean Architecture', 'Hilt (DI)', 'Retrofit', 'Room', 'Paging3', 'Flow', 'LiveData', 'Coroutine', 'Firebase', 'Git', 'Python', 'SQL'],
+        image: 'assets/images/team/akmal.png'
+    }
+];
+
+const teamCardsContainer = document.getElementById('teamCards');
 const prevBtn = document.getElementById('prevMember');
 const nextBtn = document.getElementById('nextMember');
 const dotsContainer = document.getElementById('teamDots');
+
 let currentTeamIndex = 0;
 let teamCarouselInterval;
 
-// Create dots for team members
-teamCards.forEach((_, index) => {
-    const dot = document.createElement('div');
-    dot.classList.add('team__dot');
-    if (index === 0) dot.classList.add('team__dot--active');
-    dot.addEventListener('click', () => {
-        showTeamMember(index);
-        resetTeamCarousel();
-    });
-    dotsContainer.appendChild(dot);
-});
+let teamSlides = [];
+let dots = [];
 
-const dots = document.querySelectorAll('.team__dot');
+// Генерация слайдов и точек
+if (teamCardsContainer && dotsContainer) {
+    teamMembers.forEach((member, index) => {
+        const slide = document.createElement('div');
+        slide.classList.add('team__slide');
+        if (index === 0) slide.classList.add('team__slide--active');
+
+        slide.innerHTML = `
+            <div class="team__ring"></div>
+            <div class="team__photo-circle">
+                ${member.image
+                ? `<img src="${member.image}" alt="${member.name}" class="team__photo-img">`
+                : `<span class="team__photo-initials">${member.initials}</span>`
+            }
+            </div>
+            <div class="team__role">
+                <span class="team__role-word team__role-word--primary">${member.rolePrimary}</span>
+                <span class="team__role-word team__role-word--secondary">${member.roleSecondary}</span>
+            </div>
+            <div class="team__name">${member.name}</div>
+            <div class="team__skills-list">
+                ${member.skills.map(skill => `<span class="team__skill">${skill}</span>`).join('')}
+            </div>
+        `;
+
+        teamCardsContainer.appendChild(slide);
+    });
+
+    teamSlides = Array.from(document.querySelectorAll('.team__slide'));
+
+    teamMembers.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('team__dot');
+        if (index === 0) dot.classList.add('team__dot--active');
+        dot.addEventListener('click', () => {
+            showTeamMember(index);
+            resetTeamCarousel();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    dots = Array.from(document.querySelectorAll('.team__dot'));
+}
 
 function showTeamMember(index) {
-    // Remove active class from all cards and dots
-    teamCards.forEach(card => card.classList.remove('team__card--active'));
+    if (!teamSlides.length) return;
+
+    teamSlides.forEach(slide => slide.classList.remove('team__slide--active'));
     dots.forEach(dot => dot.classList.remove('team__dot--active'));
 
-    // Add active class to current card and dot
-    if (teamCards[index]) {
-        teamCards[index].classList.add('team__card--active');
+    if (teamSlides[index]) {
+        teamSlides[index].classList.add('team__slide--active');
     }
     if (dots[index]) {
         dots[index].classList.add('team__dot--active');
@@ -133,10 +206,11 @@ function showTeamMember(index) {
 }
 
 function startTeamCarousel() {
+    if (!teamSlides.length) return;
     teamCarouselInterval = setInterval(() => {
-        currentTeamIndex = (currentTeamIndex + 1) % teamCards.length;
+        currentTeamIndex = (currentTeamIndex + 1) % teamSlides.length;
         showTeamMember(currentTeamIndex);
-    }, 5000);
+    }, 4000); // чуть быстрее, меньше «висящего» статичного кадра
 }
 
 function resetTeamCarousel() {
@@ -146,7 +220,8 @@ function resetTeamCarousel() {
 
 if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-        currentTeamIndex = (currentTeamIndex - 1 + teamCards.length) % teamCards.length;
+        if (!teamSlides.length) return;
+        currentTeamIndex = (currentTeamIndex - 1 + teamSlides.length) % teamSlides.length;
         showTeamMember(currentTeamIndex);
         resetTeamCarousel();
     });
@@ -154,7 +229,8 @@ if (prevBtn) {
 
 if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-        currentTeamIndex = (currentTeamIndex + 1) % teamCards.length;
+        if (!teamSlides.length) return;
+        currentTeamIndex = (currentTeamIndex + 1) % teamSlides.length;
         showTeamMember(currentTeamIndex);
         resetTeamCarousel();
     });
@@ -172,8 +248,11 @@ if (teamCarousel) {
     });
 }
 
-// Start team carousel
-startTeamCarousel();
+// Запуск карусели
+if (teamSlides.length) {
+    showTeamMember(0);
+    startTeamCarousel();
+}
 
 // Animate chart bars on scroll
 const chartBars = document.querySelectorAll('.chart-bar');
@@ -184,7 +263,6 @@ const chartObserver = new IntersectionObserver((entries) => {
             const targetHeight = bar.style.getPropertyValue('--height');
             bar.style.height = '0';
 
-            // Trigger animation
             setTimeout(() => {
                 bar.style.transition = 'height 1s ease';
                 bar.style.height = targetHeight;
@@ -203,12 +281,9 @@ let isScrolling;
 
 if (scrollContainer) {
     scrollContainer.addEventListener('scroll', () => {
-        // Clear the timeout if it exists
         window.clearTimeout(isScrolling);
 
-        // Set a timeout to run after scrolling ends
         isScrolling = setTimeout(() => {
-            // Scroll has stopped - snap to nearest section
             const sections = document.querySelectorAll('.section-fullscreen');
             const scrollTop = scrollContainer.scrollTop;
 
@@ -225,7 +300,6 @@ if (scrollContainer) {
                 }
             });
 
-            // Only snap if we're not already close enough
             if (closestSection && minDistance > 50) {
                 closestSection.scrollIntoView({
                     behavior: 'smooth',
@@ -241,7 +315,7 @@ let lastScrollTime = 0;
 const scrollThrottle = 100; // milliseconds
 
 if (scrollContainer) {
-    scrollContainer.addEventListener('wheel', (e) => {
+    scrollContainer.addEventListener('wheel', () => {
         const now = Date.now();
         if (now - lastScrollTime < scrollThrottle) {
             return;
@@ -257,11 +331,8 @@ document.querySelectorAll('.tech__badge').forEach(badge => {
     });
 
     badge.addEventListener('mouseleave', function () {
-        this.style.transform = 'scale(1) rotate(0deg)';
+        this.style.transform = 'scale(1) rotate(0)';
     });
 });
 
-// Initialize - Show first team member
-showTeamMember(0);
-
-console.log('Fullscreen presentation website loaded successfully! 🚀');
+console.log('Fullscreen presentation website loaded successfully with animated team block and auto-rotation.');
